@@ -1,5 +1,6 @@
 package com.symposition.game;
 
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.symposition.game.Symposition;
@@ -10,6 +11,10 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Symposition");
-		new Lwjgl3Application(new Symposition(), config);
+//		config.setFullscreenMode(Lwjgl3ApplicationConfiguration.getDisplayMode());
+		config.setWindowedMode(1280,800);
+
+
+		new Lwjgl3Application((ApplicationListener) new Symposition(), config);
 	}
 }
