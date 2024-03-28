@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="100" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="9">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="100" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="11">
  <tileset firstgid="1" name="bg" tilewidth="16" tileheight="16" tilecount="720" columns="36">
   <image source="1.png" width="576" height="324"/>
  </tileset>
@@ -52,9 +52,9 @@
  <objectgroup id="3" name="ground">
   <object id="1" x="0.5" y="192.25" width="1599.5" height="15.5"/>
  </objectgroup>
- <objectgroup id="4" name="wall">
-  <object id="2" x="0.25" y="0" width="16.25" height="176.25"/>
-  <object id="3" x="1584" y="1.5" width="16" height="174.5"/>
+ <objectgroup id="8" name="wall">
+  <object id="9" x="0" y="0" width="17" height="190.667"/>
+  <object id="10" x="1583.67" y="0.333333" width="15" height="190.667"/>
  </objectgroup>
  <objectgroup id="5" name="level1">
   <object id="5" x="799.333" y="144" width="48" height="31.3333"/>

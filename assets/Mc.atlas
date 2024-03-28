@@ -1,0 +1,19 @@
+Mc.png
+size:1024,1024
+repeat:none
+1
+bounds:2,654,576,324
+2
+bounds:2,2,576,324
+3
+bounds:2,328,576,324
+Hedgedog-Sheet
+bounds:580,302,144,192
+Rabbit-Sheet
+bounds:870,786,144,192
+Shiba-Sheet
+bounds:580,108,144,192
+Tileset
+bounds:580,690,288,288
+main female-Sheet
+bounds:580,496,144,192
