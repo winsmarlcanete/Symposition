@@ -1,5 +1,6 @@
 package Screens;
 
+import Handlers.ListenerClass;
 import Sprites.Mc;
 import Tools.B2WorldCreator;
 import com.badlogic.gdx.Gdx;
@@ -41,6 +42,7 @@ public class LevelScreen implements Screen {
     private Box2DDebugRenderer b2dr;
 
 
+
     private Mc mc;
 
 
@@ -63,6 +65,9 @@ public class LevelScreen implements Screen {
         new B2WorldCreator(world,map);
 
         mc = new Mc(world,this);
+        ContactListener ListenerClass = null;
+        world.setContactListener(new ListenerClass());
+
     }
 
     public TextureAtlas getAtlas(){
@@ -73,15 +78,13 @@ public class LevelScreen implements Screen {
 
     }
     public void handleInput(float dt){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            mc.b2body.applyLinearImpulse(new Vector2(0,4f), mc.b2body.getWorldCenter(),true);
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && mc.b2body.getLinearVelocity().x <= 2) {
-            mc.b2body.applyLinearImpulse(new Vector2(0.08f, 0), mc.b2body.getWorldCenter(), true);
+
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && mc.mcbody.getLinearVelocity().x <= 2) {
+            mc.mcbody.applyLinearImpulse(new Vector2(0.05f, 0), mc.mcbody.getWorldCenter(), true);
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && mc.b2body.getLinearVelocity().x >= -2) {
-            mc.b2body.applyLinearImpulse(new Vector2(-0.08f, 0), mc.b2body.getWorldCenter(), true);
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && mc.mcbody.getLinearVelocity().x >= -2) {
+            mc.mcbody.applyLinearImpulse(new Vector2(-0.05f, 0), mc.mcbody.getWorldCenter(), true);
         }
     }
     public void update (float dt) {
@@ -91,7 +94,7 @@ public class LevelScreen implements Screen {
         mc.update(dt);
 
         //attach gamecam to b2body mc
-        gamecam.position.x = mc.b2body.getPosition().x;
+        gamecam.position.x = mc.mcbody.getPosition().x;
         gamecam.update();
         renderer.setView(gamecam);
     }
