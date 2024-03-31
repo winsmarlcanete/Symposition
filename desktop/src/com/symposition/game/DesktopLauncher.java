@@ -1,9 +1,10 @@
 package com.symposition.game;
 
-import com.badlogic.gdx.ApplicationListener;
+import Screens.CallMainScreen;
+import Screens.MainMenuScreen;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.symposition.game.Symposition;
+import jdk.vm.ci.code.site.Call;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -15,6 +16,6 @@ public class DesktopLauncher {
 		config.setWindowedMode(1280,800);
 
 
-		new Lwjgl3Application((ApplicationListener) new Symposition(), config);
+		new Lwjgl3Application( new MainMenuScreen(), config);
 	}
 }
