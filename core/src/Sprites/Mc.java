@@ -88,7 +88,7 @@ public class Mc extends Sprite {
 
     public void defineMc(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(100/ Symposition.PPM,100/Symposition.PPM);
+        bdef.position.set(250/ Symposition.PPM,100/Symposition.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         mcbody = world.createBody(bdef);
 

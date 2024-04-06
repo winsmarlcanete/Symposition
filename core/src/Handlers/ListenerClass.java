@@ -3,6 +3,8 @@ package Handlers;
 import com.badlogic.gdx.physics.box2d.*;
 
 public class ListenerClass implements ContactListener {
+
+
     @Override
     public void beginContact(Contact contact) {
         Fixture fa = contact.getFixtureA();
