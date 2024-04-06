@@ -6,6 +6,7 @@ import Tools.B2WorldCreator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -44,6 +45,7 @@ public class LevelScreen implements Screen {
 
 
     private Mc mc;
+    Music music;
 
 
 
@@ -65,6 +67,8 @@ public class LevelScreen implements Screen {
         new B2WorldCreator(world,map);
 
         mc = new Mc(world,this);
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/level.wav"));
+        music.play();
         ContactListener ListenerClass = null;
         world.setContactListener(new ListenerClass());
 
@@ -126,12 +130,12 @@ public class LevelScreen implements Screen {
 
     @Override
     public void pause() {
-
+        music.pause();
     }
 
     @Override
     public void resume() {
-
+        music.play();
     }
 
     @Override
