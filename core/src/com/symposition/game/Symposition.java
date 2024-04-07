@@ -1,6 +1,7 @@
 package com.symposition.game;
 
 import Screens.GameScreen_Array;
+import Screens.GameScreen_Music;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,7 +23,7 @@ public class Symposition extends Game {
 		skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
 		stage = new Stage(new ScreenViewport());
 //		setScreen(new MenuScreen(this));
-		setScreen(new GameScreen_Array(this));
+		setScreen(new GameScreen_Music(this));
 
 	}
 
