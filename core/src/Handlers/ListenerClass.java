@@ -14,6 +14,7 @@ public class ListenerClass implements ContactListener {
 
         if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
             System.out.println("Pop-up message: Do you want to play level 1?");
+
         }
         if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
             System.out.println("Pop-up message: Do you want to play level 2?");
