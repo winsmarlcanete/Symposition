@@ -41,6 +41,13 @@ public class LevelScreen implements Screen {
     //Box2d variables
     private World world;
     private Box2DDebugRenderer b2dr;
+    private boolean playlevel1 = false;
+    private boolean playlevel2 = false;
+
+    private boolean playlevel3 = false;
+
+    private boolean backToMenu = false;
+
 
 
 
@@ -78,6 +85,7 @@ public class LevelScreen implements Screen {
 
                 if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
                     System.out.println("Pop-up message: Do you want to play level 1?");
+                    playlevel1 = true;
                 }
                 if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
                     System.out.println("Pop-up message: Do you want to play level 2?");
@@ -85,6 +93,11 @@ public class LevelScreen implements Screen {
                 if(fa.getUserData().equals("level3") && fa.getUserData() != null) {
                     System.out.println("Pop-up message: Do you want to play level 3?");
                 }
+                if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
+                    System.out.println("Go back?");
+                }
+
+
 
             }
 
