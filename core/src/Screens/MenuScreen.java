@@ -39,13 +39,13 @@ public class MenuScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
-        batch = game.batch;
-        skin = game.skin;
+        batch = new SpriteBatch();
         stage = game.stage;
         Gdx.input.setInputProcessor(stage);
         bgimage = new Texture(Gdx.files.internal("bg.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.wav"));
         music.play();
+        skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         Table root = new Table();
         root.setFillParent(true);
         stage.addActor(root);

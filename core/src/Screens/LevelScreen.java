@@ -49,7 +49,7 @@ public class LevelScreen implements Screen {
 
 
 
-    public LevelScreen(Symposition game){
+    public LevelScreen(final Symposition game){
         atlas = new TextureAtlas("Mc.atlas");
 
         this.game = game;
@@ -70,7 +70,27 @@ public class LevelScreen implements Screen {
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/level.wav"));
         music.play();
         ContactListener ListenerClass = null;
-        world.setContactListener(new ListenerClass());
+        world.setContactListener(new ListenerClass(){
+            @Override
+            public void beginContact(Contact contact) {
+                Fixture fa = contact.getFixtureA();
+                Fixture fb = contact.getFixtureB(); //fixture of mc
+
+                if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 1?");
+                }
+                if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 2?");
+                }
+                if(fa.getUserData().equals("level3") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 3?");
+                }
+
+            }
+
+
+        });
+
 
     }
 
@@ -101,6 +121,8 @@ public class LevelScreen implements Screen {
         gamecam.position.x = mc.mcbody.getPosition().x;
         gamecam.update();
         renderer.setView(gamecam);
+
+
     }
 
     @Override
@@ -145,6 +167,7 @@ public class LevelScreen implements Screen {
 
     @Override
     public void dispose() {
+
         map.dispose();
         renderer.dispose();
         world.dispose();

@@ -19,7 +19,7 @@ public class Symposition extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+
 		stage = new Stage(new ScreenViewport());
 		setScreen(new MenuScreen(this));
 
