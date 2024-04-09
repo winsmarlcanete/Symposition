@@ -1,5 +1,6 @@
 package com.symposition.game;
 
+import Screens.Level1;
 import Screens.MenuScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -21,7 +22,7 @@ public class Symposition extends Game {
 		batch = new SpriteBatch();
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new MenuScreen(this));
+		setScreen(new Level1(this));
 
 
 	}

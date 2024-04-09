@@ -149,7 +149,7 @@ public class LevelScreen implements Screen {
         renderer.render();
 
         //render the Box2DDebugLines
-        //b2dr.render(world, gamecam.combined);
+         b2dr.render(world, gamecam.combined);
 
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
