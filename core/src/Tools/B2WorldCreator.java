@@ -17,7 +17,7 @@ public class B2WorldCreator {
         Fixture fixture;
 
         //ground box2ddebuglines
-        for(MapObject object: map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -31,7 +31,7 @@ public class B2WorldCreator {
         }
 
         //wall box2ddebuglines
-        for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -45,7 +45,7 @@ public class B2WorldCreator {
         }
 
         //level1 box2ddebuglines
-        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -61,7 +61,7 @@ public class B2WorldCreator {
         }
 
         //level2 box2ddebuglines
-        for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -75,7 +75,7 @@ public class B2WorldCreator {
         }
 
         //level3 box2ddebuglines
-        for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -86,6 +86,21 @@ public class B2WorldCreator {
             shape.setAsBox(rect.getWidth()/2/Symposition.PPM,rect.getHeight()/2/Symposition.PPM);
             fdef.shape = shape;
             body.createFixture(fdef).setUserData("level3");
+        }
+
+        //level3 box2ddebuglines
+        for(MapObject object: map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX()+ rect.getWidth()/2)/Symposition.PPM, (rect.getY()+rect.getHeight()/2)/Symposition.PPM);
+
+            body = world.createBody(bdef);
+
+            shape.setAsBox(rect.getWidth()/2/Symposition.PPM,rect.getHeight()/2/Symposition.PPM);
+            fdef.shape = shape;
+
+            body.createFixture(fdef).setUserData("back2Menu");
         }
     }
 }

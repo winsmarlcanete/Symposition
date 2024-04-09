@@ -6,6 +6,7 @@ import Tools.B2WorldCreator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -40,14 +41,22 @@ public class LevelScreen implements Screen {
     //Box2d variables
     private World world;
     private Box2DDebugRenderer b2dr;
+    private boolean playlevel1 = false;
+    private boolean playlevel2 = false;
+
+    private boolean playlevel3 = false;
+
+    private boolean backToMenu = false;
+
 
 
 
     private Mc mc;
+    Music music;
 
 
 
-    public LevelScreen(Symposition game){
+    public LevelScreen(final Symposition game){
         atlas = new TextureAtlas("Mc.atlas");
 
         this.game = game;
@@ -65,8 +74,36 @@ public class LevelScreen implements Screen {
         new B2WorldCreator(world,map);
 
         mc = new Mc(world,this);
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/level.wav"));
+        music.play();
         ContactListener ListenerClass = null;
-        world.setContactListener(new ListenerClass());
+        world.setContactListener(new ListenerClass(){
+            @Override
+            public void beginContact(Contact contact) {
+                Fixture fa = contact.getFixtureA();
+                Fixture fb = contact.getFixtureB(); //fixture of mc
+
+                if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 1?");
+                    playlevel1 = true;
+                }
+                if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 2?");
+                }
+                if(fa.getUserData().equals("level3") && fa.getUserData() != null) {
+                    System.out.println("Pop-up message: Do you want to play level 3?");
+                }
+                if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
+                    System.out.println("Go back?");
+                }
+
+
+
+            }
+
+
+        });
+
 
     }
 
@@ -97,6 +134,8 @@ public class LevelScreen implements Screen {
         gamecam.position.x = mc.mcbody.getPosition().x;
         gamecam.update();
         renderer.setView(gamecam);
+
+
     }
 
     @Override
@@ -110,7 +149,7 @@ public class LevelScreen implements Screen {
         renderer.render();
 
         //render the Box2DDebugLines
-        //b2dr.render(world, gamecam.combined);
+         b2dr.render(world, gamecam.combined);
 
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
@@ -126,12 +165,12 @@ public class LevelScreen implements Screen {
 
     @Override
     public void pause() {
-
+        music.pause();
     }
 
     @Override
     public void resume() {
-
+        music.play();
     }
 
     @Override
@@ -141,6 +180,7 @@ public class LevelScreen implements Screen {
 
     @Override
     public void dispose() {
+
         map.dispose();
         renderer.dispose();
         world.dispose();

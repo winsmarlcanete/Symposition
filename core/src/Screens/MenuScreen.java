@@ -2,6 +2,7 @@ package Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,6 +30,7 @@ public class MenuScreen implements Screen {
     private boolean clickOptionScreen = false;
     private boolean clickExitScreen = false;
     private Texture bgimage;
+    Music music;
 
 
 
@@ -37,12 +39,13 @@ public class MenuScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
-        batch = game.batch;
-        skin = game.skin;
+        batch = new SpriteBatch();
         stage = game.stage;
         Gdx.input.setInputProcessor(stage);
         bgimage = new Texture(Gdx.files.internal("bg.png"));
-
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.wav"));
+        music.play();
+        skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         Table root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
@@ -118,17 +121,17 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
     public void pause() {
-
+        music.pause();
     }
 
     @Override
     public void resume() {
-
+        music.play();
     }
 
     @Override
@@ -138,8 +141,8 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-        skin.dispose();
-        stage.dispose();
+
+        music.dispose();
 
     }
 }
