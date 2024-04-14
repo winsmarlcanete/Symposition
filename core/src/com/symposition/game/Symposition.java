@@ -22,7 +22,7 @@ public class Symposition extends Game {
 		batch = new SpriteBatch();
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Level1(this));
+		setScreen(new MenuScreen(this));
 
 
 	}
