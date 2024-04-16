@@ -3,6 +3,7 @@ package Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -31,6 +32,13 @@ public class MenuScreen implements Screen {
     private boolean clickExitScreen = false;
     private Texture bgimage;
     Music music;
+    private Sound sfx1;
+
+    long start;
+    long end;
+    double time;
+
+
 
 
 
@@ -42,10 +50,13 @@ public class MenuScreen implements Screen {
         batch = new SpriteBatch();
         stage = game.stage;
         Gdx.input.setInputProcessor(stage);
+
         bgimage = new Texture(Gdx.files.internal("bg.png"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/menu.wav"));
         music.play();
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+        sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
+
         Table root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
@@ -53,13 +64,6 @@ public class MenuScreen implements Screen {
 
         TextButton playbtn= new TextButton("Play", skin);
         root.add(playbtn).width(350).expandX().left();
-
-        playbtn.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                clickLevelScreen = true;
-            }
-        });
 
         root.row().space(25);
 
@@ -75,6 +79,31 @@ public class MenuScreen implements Screen {
 
         TextButton exitbtn = new TextButton("Exit", skin);
         root.add(exitbtn).width(350).expandX().left();
+
+        playbtn.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                sfx1.play();
+                clickLevelScreen = true;
+
+            }
+        });
+
+        tutorialBtn.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                sfx1.play();
+
+            }
+        });
+
+        optionsbtn.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                sfx1.play();
+
+            }
+        });
 
         exitbtn.addListener(new ChangeListener() {
             @Override

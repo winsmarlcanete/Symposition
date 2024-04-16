@@ -59,13 +59,13 @@ public class GameScreen_Music implements Screen, ApplicationListener {
         audioFiles = new Sound[numberOfButtons]; // Initialize audioFiles array
 
         // Initialize audio files
-        audioFiles[0] = Gdx.audio.newSound(Gdx.files.internal("AudioFiles/Do.mp3"));
-        audioFiles[1] = Gdx.audio.newSound(Gdx.files.internal("AudioFiles/Re.mp3"));
-        audioFiles[2] = Gdx.audio.newSound(Gdx.files.internal("AudioFiles/Mi.mp3"));
-        audioFiles[3] = Gdx.audio.newSound(Gdx.files.internal("AudioFiles/Fa.mp3"));
+        audioFiles[0] = Gdx.audio.newSound(Gdx.files.internal("sounds/Do.wav"));
+        audioFiles[1] = Gdx.audio.newSound(Gdx.files.internal("sounds/Re.wav"));
+        audioFiles[2] = Gdx.audio.newSound(Gdx.files.internal("sounds/Mi.wav"));
+        audioFiles[3] = Gdx.audio.newSound(Gdx.files.internal("sounds/Fa.wav"));
 
         // Play Doremi.wav when the screen starts
-        Sound doremiSound = Gdx.audio.newSound(Gdx.files.internal("AudioFiles/Doremi.wav"));
+        Sound doremiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/doremi.wav"));
         doremiSound.play();
 
         randomizeButtonsAndAudioFiles();

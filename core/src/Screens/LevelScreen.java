@@ -11,9 +11,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -36,6 +38,7 @@ public class LevelScreen implements Screen {
     //Tiled-map variables
     private TmxMapLoader mapLoader;
     private TiledMap map;
+    private TiledMapTileLayer layer;
     private OrthogonalTiledMapRenderer renderer;
 
     //Box2d variables
@@ -47,6 +50,10 @@ public class LevelScreen implements Screen {
     private boolean playlevel3 = false;
 
     private boolean backToMenu = false;
+
+    private Texture prompt1;
+    private boolean isPressed = false;
+    private boolean okforexit = false;
 
 
 
@@ -66,6 +73,10 @@ public class LevelScreen implements Screen {
         gamePort.apply();
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("tiles/chooseLevelMap.tmx");
+
+        layer = (TiledMapTileLayer)map.getLayers().get(10);
+
+
         renderer = new OrthogonalTiledMapRenderer(map, 1/Symposition.PPM);
         gamecam.position.set(gamePort.getWorldWidth()/2,gamePort.getWorldHeight()/2, 0);
         world = new World(new Vector2(0,-10), true);
@@ -74,7 +85,7 @@ public class LevelScreen implements Screen {
         new B2WorldCreator(world,map);
 
         mc = new Mc(world,this);
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/level.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/level.wav"));
         music.play();
         ContactListener ListenerClass = null;
         world.setContactListener(new ListenerClass(){
@@ -94,15 +105,31 @@ public class LevelScreen implements Screen {
                     System.out.println("Pop-up message: Do you want to play level 3?");
                 }
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
-                    System.out.println("Go back?");
+                    layer.setVisible(true);
+
                 }
 
 
 
             }
+            @Override
+            public void endContact(Contact contact) {
+                super.endContact(contact);
+                Fixture fa = contact.getFixtureA();
+                Fixture fb = contact.getFixtureB(); //fixture of mc
+
+                if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
+                    layer.setVisible(false);
+
+                }
+            }
 
 
         });
+
+        prompt1 = new Texture(Gdx.files.internal("promptMessage/prompt1.png"));
+
+
 
 
     }
@@ -149,12 +176,19 @@ public class LevelScreen implements Screen {
         renderer.render();
 
         //render the Box2DDebugLines
-         b2dr.render(world, gamecam.combined);
+         //b2dr.render(world, gamecam.combined);
 
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         mc.draw(game.batch);
+
         game.batch.end();
+
+        if (playlevel1) {
+            music.stop();
+            game.setScreen(new Gameplay1(game));
+
+        }
 
     }
 

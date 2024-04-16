@@ -1,7 +1,6 @@
 package com.symposition.game;
 
-import Screens.Level1;
-import Screens.MenuScreen;
+import Screens.*;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
