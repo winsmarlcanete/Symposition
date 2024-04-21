@@ -52,7 +52,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         bgimage = new Texture(Gdx.files.internal("bg.png"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/menu.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.wav"));
         music.play();
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
@@ -143,6 +143,7 @@ public class MenuScreen implements Screen {
         if (clickLevelScreen == true) {
             game.setScreen(new LevelScreen(game));
             dispose();
+
         }
 
         if (clickExitScreen == true) {

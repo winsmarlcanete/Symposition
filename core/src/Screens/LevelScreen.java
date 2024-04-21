@@ -39,6 +39,7 @@ public class LevelScreen implements Screen {
     private TmxMapLoader mapLoader;
     private TiledMap map;
     private TiledMapTileLayer layer;
+    private TiledMapTileLayer layer2;
     private OrthogonalTiledMapRenderer renderer;
 
     //Box2d variables
@@ -75,6 +76,7 @@ public class LevelScreen implements Screen {
         map = mapLoader.load("tiles/chooseLevelMap.tmx");
 
         layer = (TiledMapTileLayer)map.getLayers().get(10);
+        layer2 = (TiledMapTileLayer)map.getLayers().get(11);
 
 
         renderer = new OrthogonalTiledMapRenderer(map, 1/Symposition.PPM);
@@ -85,7 +87,7 @@ public class LevelScreen implements Screen {
         new B2WorldCreator(world,map);
 
         mc = new Mc(world,this);
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/level.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg2.wav"));
         music.play();
         ContactListener ListenerClass = null;
         world.setContactListener(new ListenerClass(){
@@ -95,7 +97,6 @@ public class LevelScreen implements Screen {
                 Fixture fb = contact.getFixtureB(); //fixture of mc
 
                 if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
-                    System.out.println("Pop-up message: Do you want to play level 1?");
                     playlevel1 = true;
                 }
                 if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
@@ -106,6 +107,9 @@ public class LevelScreen implements Screen {
                 }
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(true);
+                }
+                if(fa.getUserData().equals("level1sensor") && fa.getUserData() != null) {
+                    layer2.setVisible(true);
 
                 }
 
@@ -185,8 +189,9 @@ public class LevelScreen implements Screen {
         game.batch.end();
 
         if (playlevel1) {
-            music.stop();
+
             game.setScreen(new Gameplay1(game));
+
 
         }
 

@@ -9,16 +9,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -73,12 +70,13 @@ public class Gameplay1 implements Screen {
         skin2 = new Skin(Gdx.files.internal("pink/dreams-of-pink.json"));
 
 
-        bg = new Texture(Gdx.files.internal("chapterSelectionBG.png"));
+        bg = new Texture(Gdx.files.internal("littlestar1.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
-        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/doremi.wav"));
+        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinklepart1.wav"));
         originalMusic.play();
+
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
         passSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx7.wav"));
@@ -200,18 +198,7 @@ public class Gameplay1 implements Screen {
             }
         });
 
-        //Do2
-        do2Sound = Gdx.audio.newSound(Gdx.files.internal("sounds/do2.wav"));
-        Note note8 = new Note("Do",skin, skin2,do2Sound, false);
 
-        note8.textbutton.addListener(new ClickListener(){
-
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                note8.playSound();
-            }
-        });
 
 
 
@@ -223,7 +210,7 @@ public class Gameplay1 implements Screen {
         notesOriginal.add(note5);
         notesOriginal.add(note6);
         notesOriginal.add(note7);
-        notesOriginal.add(note8);
+
 
 
 
@@ -235,7 +222,7 @@ public class Gameplay1 implements Screen {
         notes.add(note5);
         notes.add(note6);
         notes.add(note7);
-        notes.add(note8);
+
 
 
         Collections.shuffle(notes);
@@ -314,6 +301,8 @@ public class Gameplay1 implements Screen {
 
 
 
+
+
     }
 
     public void swap(int pair1, int pair2){
@@ -330,7 +319,7 @@ public class Gameplay1 implements Screen {
         selectedNote1++;
         selectedNote2++;
 
-        if(selectedNote1 == 7){
+        if(selectedNote1 == 6){
             selectedNote1 = 0;
             selectedNote2 = 1;
         }
@@ -342,7 +331,7 @@ public class Gameplay1 implements Screen {
         notes.get(4).setHighlighted(false);
         notes.get(5).setHighlighted(false);
         notes.get(6).setHighlighted(false);
-        notes.get(7).setHighlighted(false);
+
 
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
@@ -356,10 +345,7 @@ public class Gameplay1 implements Screen {
     }
 
     public void finish(){
-        boolean isEqual = notesOriginal.equals(notes);
-        if (isEqual) {
-            nextLevel = true;
-        }
+        nextLevel = true;
     }
 
     public void play(){
@@ -379,7 +365,6 @@ public class Gameplay1 implements Screen {
             Thread.sleep(500);
             notes.get(6).playSound();
             Thread.sleep(500);
-            notes.get(7).playSound();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -416,8 +401,9 @@ public class Gameplay1 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Level1(game));
+            game.setScreen(new Gameplay2(game));
         }
+
     }
 
     @Override
