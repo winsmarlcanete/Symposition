@@ -105,8 +105,8 @@ public class Gameplay1 implements Screen {
 
 
         // Do
-        doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Do.wav"));
-        Note note1 = new Note("Do",skin,skin2, doSound, false);
+        doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        Note note1 = new Note("C6",skin,skin2, doSound, false);
 
         note1.textbutton.addListener(new ClickListener(){
             @Override
@@ -120,8 +120,8 @@ public class Gameplay1 implements Screen {
 
 
         //Re
-        reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Re.wav"));
-        Note note2 = new Note("Re",skin,skin2, reSound, false);
+        reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        Note note2 = new Note("C6",skin,skin2, reSound, false);
 
         note2.textbutton.addListener(new ClickListener(){
             @Override
@@ -134,8 +134,8 @@ public class Gameplay1 implements Screen {
 
 
         //Mi
-        miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Mi.wav"));
-        Note note3 = new Note("Mi",skin,skin2, miSound, false);
+        miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
+        Note note3 = new Note("G6",skin,skin2, miSound, false);
 
         note3.textbutton.addListener(new ClickListener(){
 
@@ -149,8 +149,8 @@ public class Gameplay1 implements Screen {
 
 
         //Fa
-        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Fa.wav"));
-        Note note4 = new Note("Fa",skin,skin2, faSound, false);
+        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
+        Note note4 = new Note("G6",skin,skin2, faSound, false);
 
         note4.textbutton.addListener(new ClickListener(){
 
@@ -162,8 +162,8 @@ public class Gameplay1 implements Screen {
         });
 
         //So
-        soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/so.wav"));
-        Note note5 = new Note("So",skin,skin2,soSound, false);
+        soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/A6.wav"));
+        Note note5 = new Note("A6",skin,skin2,soSound, false);
 
         note5.textbutton.addListener(new ClickListener(){
 
@@ -175,8 +175,8 @@ public class Gameplay1 implements Screen {
         });
 
         //La
-        laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/la.wav"));
-        Note note6 = new Note("La",skin,skin2, laSound, false);
+        laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/A6.wav"));
+        Note note6 = new Note("A6",skin,skin2, laSound, false);
 
         note6.textbutton.addListener(new ClickListener(){
 
@@ -188,8 +188,8 @@ public class Gameplay1 implements Screen {
         });
 
         //Ti
-        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/ti.wav"));
-        Note note7 = new Note("Ti",skin,skin2, tiSound, false);
+        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
+        Note note7 = new Note("G6",skin,skin2, tiSound, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
@@ -226,6 +226,7 @@ public class Gameplay1 implements Screen {
         notesOriginal.add(note8);
 
 
+
         notes = new ArrayList<>();
         notes.add(note1);
         notes.add(note2);
@@ -235,6 +236,7 @@ public class Gameplay1 implements Screen {
         notes.add(note6);
         notes.add(note7);
         notes.add(note8);
+
 
         Collections.shuffle(notes);
 
@@ -364,19 +366,19 @@ public class Gameplay1 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(1).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(2).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(3).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(4).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(5).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(6).playSound();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             notes.get(7).playSound();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
