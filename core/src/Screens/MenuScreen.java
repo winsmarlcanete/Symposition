@@ -83,7 +83,13 @@ public class MenuScreen implements Screen {
         playbtn.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
                 sfx1.play();
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 clickLevelScreen = true;
 
             }

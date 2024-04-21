@@ -22,7 +22,7 @@ public class Symposition extends Game {
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Gameplay1(this));
+		setScreen(new MenuScreen(this));
 
 
 	}

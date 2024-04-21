@@ -361,8 +361,28 @@ public class Gameplay1 implements Screen {
     }
 
     public void play(){
-        notes.get(0).playSound();
-        notes.get(1).playSound();
+
+        try {
+            notes.get(0).playSound();
+            Thread.sleep(1000);
+            notes.get(1).playSound();
+            Thread.sleep(1000);
+            notes.get(2).playSound();
+            Thread.sleep(1000);
+            notes.get(3).playSound();
+            Thread.sleep(1000);
+            notes.get(4).playSound();
+            Thread.sleep(1000);
+            notes.get(5).playSound();
+            Thread.sleep(1000);
+            notes.get(6).playSound();
+            Thread.sleep(1000);
+            notes.get(7).playSound();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
     }
 
