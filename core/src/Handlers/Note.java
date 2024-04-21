@@ -13,20 +13,28 @@ public class Note {
     public TextButton textbutton;
 
     public String noteName;
+    private Skin skin2;
 
-    public Note(String noteName, Skin skin, Sound sound, boolean isHighlighted){
+    public Note(String noteName, Skin skin,Skin skin2, Sound sound, boolean isHighlighted){
         this.skin = skin;
         this.isHighlighted = isHighlighted;
         this.sound = sound;
         this.noteName = noteName;
+        this.skin2 = skin2;
 
         textbutton = new TextButton(noteName,skin);
 
+
     }
 
-    public boolean setHighlighted(boolean highlighted) {
-        isHighlighted = highlighted;
-        return isHighlighted;
+    public void setHighlighted(boolean highlighted) {
+
+        if (highlighted) {
+            textbutton.setColor(1,0,1,1);
+        } if (!highlighted){
+            textbutton.setColor(1,1,1,1);
+        }
+
 
     }
 

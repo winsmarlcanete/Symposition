@@ -20,8 +20,9 @@ public class Symposition extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 
+
 		stage = new Stage(new ScreenViewport());
-		setScreen(new MenuScreen(this));
+		setScreen(new Gameplay1(this));
 
 
 	}

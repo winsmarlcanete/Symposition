@@ -7,7 +7,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -29,6 +31,8 @@ public class Gameplay1 implements Screen {
     OrthographicCamera camera;
 
     private Skin skin;
+    private Skin skin2;
+    private Skin skin3;
     private Stage stage;
     private Texture bg;
     private Table root;
@@ -55,6 +59,7 @@ public class Gameplay1 implements Screen {
 
     private boolean nextLevel;
 
+
     public Gameplay1(final Symposition game){
 
         this.game = game;
@@ -62,7 +67,12 @@ public class Gameplay1 implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+
+
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+        skin2 = new Skin(Gdx.files.internal("pink/dreams-of-pink.json"));
+
+
         bg = new Texture(Gdx.files.internal("chapterSelectionBG.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
@@ -96,7 +106,7 @@ public class Gameplay1 implements Screen {
 
         // Do
         doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Do.wav"));
-        Note note1 = new Note("Do",skin, doSound, false);
+        Note note1 = new Note("Do",skin,skin2, doSound, false);
 
         note1.textbutton.addListener(new ClickListener(){
             @Override
@@ -111,7 +121,7 @@ public class Gameplay1 implements Screen {
 
         //Re
         reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Re.wav"));
-        Note note2 = new Note("Re",skin, reSound, false);
+        Note note2 = new Note("Re",skin,skin2, reSound, false);
 
         note2.textbutton.addListener(new ClickListener(){
             @Override
@@ -125,7 +135,7 @@ public class Gameplay1 implements Screen {
 
         //Mi
         miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Mi.wav"));
-        Note note3 = new Note("Mi",skin, miSound, false);
+        Note note3 = new Note("Mi",skin,skin2, miSound, false);
 
         note3.textbutton.addListener(new ClickListener(){
 
@@ -140,7 +150,7 @@ public class Gameplay1 implements Screen {
 
         //Fa
         faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Fa.wav"));
-        Note note4 = new Note("Fa",skin, faSound, false);
+        Note note4 = new Note("Fa",skin,skin2, faSound, false);
 
         note4.textbutton.addListener(new ClickListener(){
 
@@ -153,7 +163,7 @@ public class Gameplay1 implements Screen {
 
         //So
         soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/so.wav"));
-        Note note5 = new Note("So",skin,soSound, false);
+        Note note5 = new Note("So",skin,skin2,soSound, false);
 
         note5.textbutton.addListener(new ClickListener(){
 
@@ -166,7 +176,7 @@ public class Gameplay1 implements Screen {
 
         //La
         laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/la.wav"));
-        Note note6 = new Note("La",skin, laSound, false);
+        Note note6 = new Note("La",skin,skin2, laSound, false);
 
         note6.textbutton.addListener(new ClickListener(){
 
@@ -179,7 +189,7 @@ public class Gameplay1 implements Screen {
 
         //Ti
         tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/ti.wav"));
-        Note note7 = new Note("Ti",skin, tiSound, false);
+        Note note7 = new Note("Ti",skin,skin2, tiSound, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
@@ -192,7 +202,7 @@ public class Gameplay1 implements Screen {
 
         //Do2
         do2Sound = Gdx.audio.newSound(Gdx.files.internal("sounds/do2.wav"));
-        Note note8 = new Note("Do",skin, do2Sound, false);
+        Note note8 = new Note("Do",skin, skin2,do2Sound, false);
 
         note8.textbutton.addListener(new ClickListener(){
 
@@ -202,6 +212,8 @@ public class Gameplay1 implements Screen {
                 note8.playSound();
             }
         });
+
+
 
         notesOriginal = new ArrayList<>();
         notesOriginal.add(note1);
@@ -225,6 +237,7 @@ public class Gameplay1 implements Screen {
         notes.add(note8);
 
         Collections.shuffle(notes);
+
 
 
 
@@ -259,7 +272,7 @@ public class Gameplay1 implements Screen {
 
                 pass(selectedNote1, selectedNote2);
                 passSound.play();
-                originalMusic.play();
+
 
 
             }
@@ -292,6 +305,12 @@ public class Gameplay1 implements Screen {
         });
 
 
+        notes.get(selectedNote1).setHighlighted(true);
+        notes.get(selectedNote2).setHighlighted(true);
+
+
+
+
 
     }
 
@@ -312,8 +331,26 @@ public class Gameplay1 implements Screen {
         if(selectedNote1 == 7){
             selectedNote1 = 0;
             selectedNote2 = 1;
-
         }
+
+        notes.get(0).setHighlighted(false);
+        notes.get(1).setHighlighted(false);
+        notes.get(2).setHighlighted(false);
+        notes.get(3).setHighlighted(false);
+        notes.get(4).setHighlighted(false);
+        notes.get(5).setHighlighted(false);
+        notes.get(6).setHighlighted(false);
+        notes.get(7).setHighlighted(false);
+
+        notes.get(selectedNote1).setHighlighted(true);
+        notes.get(selectedNote2).setHighlighted(true);
+
+
+
+
+
+
+
     }
 
     public void finish(){
