@@ -73,7 +73,7 @@ public class Gameplay2 implements Screen {
         skin2 = new Skin(Gdx.files.internal("pink/dreams-of-pink.json"));
 
 
-        bg = new Texture(Gdx.files.internal("littlestar2.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/littlestar2.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
@@ -348,10 +348,7 @@ public class Gameplay2 implements Screen {
     }
 
     public void finish(){
-        boolean isEqual = notesOriginal.equals(notes);
-        if (isEqual) {
-            nextLevel = true;
-        }
+        nextLevel = true;
     }
 
     public void play(){
@@ -407,7 +404,7 @@ public class Gameplay2 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Level1(game));
+            game.setScreen(new Gameplay3(game));
         }
 
     }

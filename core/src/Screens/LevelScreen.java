@@ -40,6 +40,7 @@ public class LevelScreen implements Screen {
     private TiledMap map;
     private TiledMapTileLayer layer;
     private TiledMapTileLayer layer2;
+    private TiledMapTileLayer layer3;
     private OrthogonalTiledMapRenderer renderer;
 
     //Box2d variables
@@ -77,7 +78,7 @@ public class LevelScreen implements Screen {
 
         layer = (TiledMapTileLayer)map.getLayers().get(10);
         layer2 = (TiledMapTileLayer)map.getLayers().get(11);
-
+        layer3 = (TiledMapTileLayer)map.getLayers().get(13);
 
         renderer = new OrthogonalTiledMapRenderer(map, 1/Symposition.PPM);
         gamecam.position.set(gamePort.getWorldWidth()/2,gamePort.getWorldHeight()/2, 0);
@@ -99,19 +100,16 @@ public class LevelScreen implements Screen {
                 if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
                     playlevel1 = true;
                 }
-                if(fa.getUserData().equals("level2") && fa.getUserData() != null) {
-                    System.out.println("Pop-up message: Do you want to play level 2?");
-                }
-                if(fa.getUserData().equals("level3") && fa.getUserData() != null) {
-                    System.out.println("Pop-up message: Do you want to play level 3?");
-                }
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(true);
                 }
                 if(fa.getUserData().equals("level1sensor") && fa.getUserData() != null) {
                     layer2.setVisible(true);
-
                 }
+                if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
+                    layer3.setVisible(true);
+                }
+
 
 
 
@@ -124,7 +122,9 @@ public class LevelScreen implements Screen {
 
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(false);
-
+                }
+                if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
+                    layer3.setVisible(false);
                 }
             }
 
