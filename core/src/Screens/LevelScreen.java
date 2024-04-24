@@ -47,15 +47,6 @@ public class LevelScreen implements Screen {
     private World world;
     private Box2DDebugRenderer b2dr;
     private boolean playlevel1 = false;
-    private boolean playlevel2 = false;
-
-    private boolean playlevel3 = false;
-
-    private boolean backToMenu = false;
-
-    private Texture prompt1;
-    private boolean isPressed = false;
-    private boolean okforexit = false;
 
 
 
@@ -131,7 +122,6 @@ public class LevelScreen implements Screen {
 
         });
 
-        prompt1 = new Texture(Gdx.files.internal("promptMessage/prompt1.png"));
 
 
 

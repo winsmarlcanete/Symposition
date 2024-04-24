@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 
 public class MenuScreen implements Screen {
@@ -27,16 +26,12 @@ public class MenuScreen implements Screen {
     private Stage stage;
     private SpriteBatch batch;
     private boolean clickLevelScreen = false;
-    private boolean clickTutorialScreen = false;
-    private boolean clickOptionScreen = false;
+
     private boolean clickExitScreen = false;
     private Texture bgimage;
     Music music;
     private Sound sfx1;
 
-    long start;
-    long end;
-    double time;
 
 
 
@@ -52,7 +47,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         bgimage = new Texture(Gdx.files.internal("bgImages/bg.png"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/menu.wav"));
         music.play();
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
