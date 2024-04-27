@@ -47,6 +47,8 @@ public class LevelScreen implements Screen {
     private World world;
     private Box2DDebugRenderer b2dr;
     private boolean playlevel1 = false;
+    private boolean goback2menu;
+    private boolean backMenu = false;
 
 
 
@@ -93,6 +95,7 @@ public class LevelScreen implements Screen {
                 }
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(true);
+                    goback2menu = true;
                 }
                 if(fa.getUserData().equals("level1sensor") && fa.getUserData() != null) {
                     layer2.setVisible(true);
@@ -113,6 +116,7 @@ public class LevelScreen implements Screen {
 
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(false);
+                    goback2menu = false;
                 }
                 if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
                     layer3.setVisible(false);
@@ -143,6 +147,9 @@ public class LevelScreen implements Screen {
 
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && mc.mcbody.getLinearVelocity().x >= -2) {
             mc.mcbody.applyLinearImpulse(new Vector2(-0.05f, 0), mc.mcbody.getWorldCenter(), true);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && goback2menu) {
+            backMenu = true;
         }
     }
     public void update (float dt) {
@@ -182,7 +189,8 @@ public class LevelScreen implements Screen {
 
             game.setScreen(new Gameplay1(game));
 
-
+        } if (backMenu){
+            game.setScreen(new MenuScreen(game));
         }
 
     }

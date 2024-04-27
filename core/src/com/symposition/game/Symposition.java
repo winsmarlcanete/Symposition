@@ -2,10 +2,8 @@ package com.symposition.game;
 
 import Screens.*;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class Symposition extends Game {
@@ -14,7 +12,6 @@ public class Symposition extends Game {
 	public static final int V_HEIGHT = 200;
 	public static final float PPM = 100; //pixels per meter
 
-	public Skin skin;
 	public Stage stage;
 	@Override
 	public void create () {

@@ -26,29 +26,30 @@ public class Gameplay3 implements Screen {
 
     OrthographicCamera camera;
 
-    private Skin skin;
-    private Stage stage;
-    private Texture bg;
-    private Table root;
-    private Table note;
-    private Table control;
-    private  Sound doSound;
-    private  Sound reSound;
-    private  Sound miSound;
-    private  Sound faSound;
-    private Sound soSound;
-    private Sound laSound;
-    private Sound tiSound;
-    private Sound swapSound;
-    private Sound passSound;
+    private final Skin skin;
+    private final Stage stage;
+    private final Texture bg;
+    private final Table root;
+    private final Table note;
+    private final Table control;
+    private final Sound doSound;
+    private final Sound reSound;
+    private final Sound miSound;
+    private final Sound faSound;
+    private final Sound soSound;
+    private final Sound laSound;
+    private final Sound tiSound;
+    private final Sound swapSound;
+    private final Sound passSound;
+    private final Sound wrongSound;
     private int selectedNote1 = 0;
     private int selectedNote2 = 1;
-    private Music music;
-    private Music originalMusic;
+    private final Music music;
+    private final Music originalMusic;
 
-    private ArrayList<Note> notes;
+    private final ArrayList<Note> notes;
 
-    private ArrayList<Note> notesOriginal;
+    private final ArrayList<Note> notesOriginal;
 
     private boolean nextLevel;
 
@@ -72,6 +73,7 @@ public class Gameplay3 implements Screen {
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
         passSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx7.wav"));
+        wrongSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/wrong.wav"));
 
 
         stage = new Stage(new ScreenViewport());
@@ -251,7 +253,7 @@ public class Gameplay3 implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
 
-                pass(selectedNote1, selectedNote2);
+                pass();
                 passSound.play();
 
 
@@ -307,7 +309,7 @@ public class Gameplay3 implements Screen {
 
     }
 
-    public void pass(int pair1, int pair2){
+    public void pass(){
         selectedNote1++;
         selectedNote2++;
 
@@ -337,7 +339,20 @@ public class Gameplay3 implements Screen {
     }
 
     public void finish(){
-        nextLevel = true;
+
+        if (    notesOriginal.get(0).noteName == notes.get(0).noteName &&
+                notesOriginal.get(1).noteName == notes.get(1).noteName &&
+                notesOriginal.get(2).noteName == notes.get(2).noteName &&
+                notesOriginal.get(3).noteName == notes.get(3).noteName &&
+                notesOriginal.get(4).noteName == notes.get(4).noteName &&
+                notesOriginal.get(5).noteName == notes.get(5).noteName &&
+                notesOriginal.get(6).noteName == notes.get(6).noteName
+        ) {
+            nextLevel = true;
+        }
+        else {
+            wrongSound.play();
+        }
     }
 
     public void play(){

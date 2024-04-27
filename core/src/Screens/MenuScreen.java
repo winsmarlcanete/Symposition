@@ -22,15 +22,15 @@ public class MenuScreen implements Screen {
 
     final Symposition game;
     OrthographicCamera camera;
-    private Skin skin;
-    private Stage stage;
-    private SpriteBatch batch;
+    private final Skin skin;
+    private final Stage stage;
+    private final SpriteBatch batch;
     private boolean clickLevelScreen = false;
 
     private boolean clickExitScreen = false;
-    private Texture bgimage;
+    private final Texture bgimage;
     Music music;
-    private Sound sfx1;
+    private final Sound sfx1;
 
 
 
@@ -130,13 +130,14 @@ public class MenuScreen implements Screen {
         stage.act();
         stage.draw();
 
-        if (clickLevelScreen == true) {
+        if (clickLevelScreen) {
             game.setScreen(new LevelScreen(game));
-            dispose();
+            music.stop();
+
 
         }
 
-        if (clickExitScreen == true) {
+        if (clickExitScreen) {
             dispose();
             Gdx.app.exit();
             System.exit(-1);
@@ -167,8 +168,9 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
         music.dispose();
+        skin.dispose();
+        stage.dispose();
 
     }
 }
