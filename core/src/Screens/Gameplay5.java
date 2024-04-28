@@ -68,7 +68,7 @@ public class Gameplay5 implements Screen {
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
 
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/littlestar5.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
