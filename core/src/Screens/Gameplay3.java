@@ -408,7 +408,7 @@ public class Gameplay3 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Gameplay4(game));
+            game.setScreen(new Gameplay6(game));
         }
 
     }
