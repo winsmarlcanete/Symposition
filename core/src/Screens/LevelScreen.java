@@ -41,14 +41,23 @@ public class LevelScreen implements Screen {
     private TiledMapTileLayer layer;
     private TiledMapTileLayer layer2;
     private TiledMapTileLayer layer3;
+    private TiledMapTileLayer layer4;
+    private TiledMapTileLayer layer5;
     private OrthogonalTiledMapRenderer renderer;
 
     //Box2d variables
     private World world;
     private Box2DDebugRenderer b2dr;
-    private boolean playlevel1 = false;
+
     private boolean goback2menu;
     private boolean backMenu = false;
+    private boolean goplaylevel1;
+    private boolean playlevel1 = false;
+    private boolean goplaylevel2;
+    private boolean playlevel2 = false;
+    private boolean goplaylevel3;
+    private boolean playlevel3 = false;
+
 
 
 
@@ -72,6 +81,9 @@ public class LevelScreen implements Screen {
         layer = (TiledMapTileLayer)map.getLayers().get(10);
         layer2 = (TiledMapTileLayer)map.getLayers().get(11);
         layer3 = (TiledMapTileLayer)map.getLayers().get(13);
+        layer4 = (TiledMapTileLayer)map.getLayers().get(15);
+        layer5 = (TiledMapTileLayer)map.getLayers().get(16);
+
 
         renderer = new OrthogonalTiledMapRenderer(map, 1/Symposition.PPM);
         gamecam.position.set(gamePort.getWorldWidth()/2,gamePort.getWorldHeight()/2, 0);
@@ -90,18 +102,25 @@ public class LevelScreen implements Screen {
                 Fixture fa = contact.getFixtureA();
                 Fixture fb = contact.getFixtureB(); //fixture of mc
 
-                if(fa.getUserData().equals("level1") && fa.getUserData() != null) {
-                    playlevel1 = true;
-                }
                 if(fa.getUserData().equals("back2Menu") && fa.getUserData() != null) {
                     layer.setVisible(true);
                     goback2menu = true;
                 }
                 if(fa.getUserData().equals("level1sensor") && fa.getUserData() != null) {
                     layer2.setVisible(true);
+                    goplaylevel1 = true;
                 }
                 if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
                     layer3.setVisible(true);
+                }
+                if(fa.getUserData().equals("level2sensor") && fa.getUserData() != null) {
+                    layer4.setVisible(true);
+                    goplaylevel2 = true;
+                }
+
+                if(fa.getUserData().equals("level3sensor") && fa.getUserData() != null) {
+                    layer5.setVisible(true);
+                    goplaylevel3 = true;
                 }
 
 
@@ -120,6 +139,21 @@ public class LevelScreen implements Screen {
                 }
                 if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
                     layer3.setVisible(false);
+                }
+
+                if(fa.getUserData().equals("level1sensor") && fa.getUserData() != null) {
+                    layer2.setVisible(false);
+                    goplaylevel1 = false;
+                }
+
+                if(fa.getUserData().equals("level2sensor") && fa.getUserData() != null) {
+                    layer4.setVisible(false);
+                    goplaylevel2 = false;
+                }
+
+                if(fa.getUserData().equals("level3sensor") && fa.getUserData() != null) {
+                    layer5.setVisible(false);
+                    goplaylevel3 = false;
                 }
             }
 
@@ -150,6 +184,16 @@ public class LevelScreen implements Screen {
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && goback2menu) {
             backMenu = true;
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.E) && goplaylevel1) {
+            playlevel1 = true;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.E) && goplaylevel2) {
+            playlevel2 = true;
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.E) && goplaylevel3) {
+            playlevel3 = true;
         }
     }
     public void update (float dt) {
@@ -189,7 +233,14 @@ public class LevelScreen implements Screen {
 
             game.setScreen(new Gameplay1(game));
 
-        } if (backMenu){
+        } if (playlevel2){
+            game.setScreen(new Gameplay2(game));
+        }
+
+        if (playlevel3){
+            game.setScreen(new Gameplay3(game));
+        }
+        if (backMenu) {
             game.setScreen(new MenuScreen(game));
         }
 

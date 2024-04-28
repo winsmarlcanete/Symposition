@@ -132,5 +132,33 @@ public class B2WorldCreator {
 
             body.createFixture(fdef).setUserData("usearrow");
         }
+
+        for(MapObject object: map.getLayers().get(17).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX()+ rect.getWidth()/2)/Symposition.PPM, (rect.getY()+rect.getHeight()/2)/Symposition.PPM);
+
+            body = world.createBody(bdef);
+
+            shape.setAsBox(rect.getWidth()/2/Symposition.PPM,rect.getHeight()/2/Symposition.PPM);
+            fdef.shape = shape;
+
+            body.createFixture(fdef).setUserData("level2sensor");
+        }
+
+        for(MapObject object: map.getLayers().get(18).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX()+ rect.getWidth()/2)/Symposition.PPM, (rect.getY()+rect.getHeight()/2)/Symposition.PPM);
+
+            body = world.createBody(bdef);
+
+            shape.setAsBox(rect.getWidth()/2/Symposition.PPM,rect.getHeight()/2/Symposition.PPM);
+            fdef.shape = shape;
+
+            body.createFixture(fdef).setUserData("level3sensor");
+        }
     }
 }
