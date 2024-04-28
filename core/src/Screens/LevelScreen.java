@@ -111,7 +111,7 @@ public class LevelScreen implements Screen {
                     goplaylevel1 = true;
                 }
                 if(fa.getUserData().equals("usearrow") && fa.getUserData() != null) {
-                    layer3.setVisible(true);
+
                 }
                 if(fa.getUserData().equals("level2sensor") && fa.getUserData() != null) {
                     layer4.setVisible(true);
