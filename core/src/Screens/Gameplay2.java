@@ -188,8 +188,8 @@ public class Gameplay2 implements Screen {
         });
 
         //Ti
-        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
-        Note note7 = new Note("G6",skin, tiSound, false);
+        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        Note note7 = new Note("C6",skin, tiSound, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
