@@ -413,7 +413,7 @@ public class Gameplay5 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Gameplay2(game));
+            game.setScreen(new Gameplay6(game));
         }
 
     }
