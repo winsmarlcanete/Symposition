@@ -32,6 +32,7 @@ public class Twinkle2 implements Screen {
     OrthographicCamera camera;
 
     private final Skin skin;
+    private final Skin skin2;
 
     private final Stage stage;
     private final Texture bg;
@@ -70,7 +71,7 @@ public class Twinkle2 implements Screen {
 
 
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
-
+        skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar2.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
@@ -96,16 +97,16 @@ public class Twinkle2 implements Screen {
 
         TextButton pause = new TextButton("ll", skin);
         root.add(pause).width(130).expandX().left();
-        Window pausewindow = new Window("Pause", skin);
-        pausewindow.padLeft(20).setWidth(600);
+        Window pausewindow = new Window("", skin2);
+        pausewindow.setWidth(600);
         pausewindow.setHeight(400);
         pausewindow.setPosition(stage.getWidth()/2 - pausewindow.getWidth()/2, stage.getHeight()/2 - pausewindow.getHeight()/2);
 
-        TextButton con = new TextButton("Continue", skin);
-        pausewindow.add(con);
-        pausewindow.row().padTop(50);
-        TextButton exit = new TextButton("Exit", skin);
-        pausewindow.add(exit);
+        TextButton con = new TextButton("Continue", skin2);
+        pausewindow.add(con).width(200).height(65);
+        pausewindow.row().padTop(30);
+        TextButton exit = new TextButton("Exit", skin2);
+        pausewindow.add(exit).width(200).height(65);
         pause.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -457,6 +458,7 @@ public class Twinkle2 implements Screen {
 
         if (nextLevel) {
             game.setScreen(new Twinkle3(game));
+            music.dispose();
         }
 
     }
@@ -485,5 +487,6 @@ public class Twinkle2 implements Screen {
     public void dispose() {
         skin.dispose();
         stage.dispose();
+        music.dispose();
     }
 }

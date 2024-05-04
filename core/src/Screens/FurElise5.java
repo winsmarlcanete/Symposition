@@ -22,7 +22,7 @@ import com.symposition.game.Symposition;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Twinkle4 implements Screen {
+public class FurElise5 implements Screen {
 
     final Symposition game;
 
@@ -30,18 +30,20 @@ public class Twinkle4 implements Screen {
 
     private final Skin skin;
     private final Skin skin2;
+
     private final Stage stage;
     private final Texture bg;
     private final Table root;
     private final Table note;
     private final Table control;
-    private final Sound doSound;
-    private final Sound reSound;
-    private final Sound miSound;
-    private final Sound faSound;
-    private final Sound soSound;
-    private final Sound laSound;
-    private final Sound tiSound;
+    private final Sound firstNote;
+    private final Sound secondNote;
+    private final Sound thirdNote;
+    private final Sound fourthNote;
+    private final Sound fifthNote;
+    private final Sound sixthNote;
+    private final Sound seventhNote;
+    private final Sound eighthNote;
     private final Sound swapSound;
     private final Sound passSound;
     private final Sound wrongSound;
@@ -57,21 +59,24 @@ public class Twinkle4 implements Screen {
     private boolean nextLevel;
 
 
-    public Twinkle4(final Symposition game){
+    public FurElise5(final Symposition game){
 
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+
+
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar4.png"));
+
+        bg = new Texture(Gdx.files.internal("bgImages/littlestar5.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
-        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinklepart3.wav"));
+        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE5.wav"));
         originalMusic.play();
 
 
@@ -81,6 +86,7 @@ public class Twinkle4 implements Screen {
 
 
         stage = new Stage(new ScreenViewport());
+//        stage = new Stage(new FillViewport(Symposition.V_WIDTH, Symposition.V_HEIGHT));
         Gdx.input.setInputProcessor(stage);
 
         root = new Table();
@@ -128,20 +134,15 @@ public class Twinkle4 implements Screen {
         });
 
         root.row().padTop(100);
-
         root.add(note);
         root.row().padBottom(180);
         root.add(control).padTop(100);
 
         stage.addActor(root);
 
-
-
-
-
         // Do
-        doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
-        Note note1 = new Note("G6",skin,doSound, false);
+        firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/B5.wav"));
+        Note note1 = new Note("1",skin, firstNote, false);
 
         note1.textbutton.addListener(new ClickListener(){
             @Override
@@ -155,8 +156,8 @@ public class Twinkle4 implements Screen {
 
 
         //Re
-        reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
-        Note note2 = new Note("G6",skin, reSound, false);
+        secondNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        Note note2 = new Note("2",skin, secondNote, false);
 
         note2.textbutton.addListener(new ClickListener(){
             @Override
@@ -169,8 +170,8 @@ public class Twinkle4 implements Screen {
 
 
         //Mi
-        miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
-        Note note3 = new Note("F6",skin, miSound, false);
+        thirdNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        Note note3 = new Note("3",skin, thirdNote, false);
 
         note3.textbutton.addListener(new ClickListener(){
 
@@ -184,8 +185,8 @@ public class Twinkle4 implements Screen {
 
 
         //Fa
-        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
-        Note note4 = new Note("F6",skin, faSound, false);
+        fourthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        Note note4 = new Note("4",skin, fourthNote, false);
 
         note4.textbutton.addListener(new ClickListener(){
 
@@ -197,8 +198,8 @@ public class Twinkle4 implements Screen {
         });
 
         //So
-        soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
-        Note note5 = new Note("E6",skin,soSound, false);
+        fifthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G5.wav"));
+        Note note5 = new Note("5",skin, fifthNote, false);
 
         note5.textbutton.addListener(new ClickListener(){
 
@@ -210,8 +211,8 @@ public class Twinkle4 implements Screen {
         });
 
         //La
-        laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
-        Note note6 = new Note("E6",skin, laSound, false);
+        sixthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
+        Note note6 = new Note("6",skin, sixthNote, false);
 
         note6.textbutton.addListener(new ClickListener(){
 
@@ -223,8 +224,8 @@ public class Twinkle4 implements Screen {
         });
 
         //Ti
-        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
-        Note note7 = new Note("D6",skin, tiSound, false);
+        seventhNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        Note note7 = new Note("4",skin, seventhNote, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
@@ -235,9 +236,17 @@ public class Twinkle4 implements Screen {
             }
         });
 
+        eighthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        Note note8 = new Note("3",skin, eighthNote, false);
 
+        note8.textbutton.addListener(new ClickListener(){
 
-
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                note8.playSound();
+            }
+        });
 
         notesOriginal = new ArrayList<>();
         notesOriginal.add(note1);
@@ -247,8 +256,7 @@ public class Twinkle4 implements Screen {
         notesOriginal.add(note5);
         notesOriginal.add(note6);
         notesOriginal.add(note7);
-
-
+        notesOriginal.add(note8);
 
 
         notes = new ArrayList<>();
@@ -259,17 +267,14 @@ public class Twinkle4 implements Screen {
         notes.add(note5);
         notes.add(note6);
         notes.add(note7);
-
-
+        notes.add(note8);
 
         Collections.shuffle(notes);
 
 
-
-
         //Add the textbuttons to the table for it to be rendered
         for (Note i : notes) {
-            note.add(i.textbutton);
+            note.add(i.textbutton).width(120);
         }
 
 
@@ -334,12 +339,6 @@ public class Twinkle4 implements Screen {
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
 
-
-
-
-
-
-
     }
 
     public void swap(int pair1, int pair2){
@@ -356,7 +355,7 @@ public class Twinkle4 implements Screen {
         selectedNote1++;
         selectedNote2++;
 
-        if(selectedNote1 == 6){
+        if(selectedNote1 == notes.size()-1){
             selectedNote1 = 0;
             selectedNote2 = 1;
         }
@@ -368,7 +367,7 @@ public class Twinkle4 implements Screen {
         notes.get(4).setHighlighted(false);
         notes.get(5).setHighlighted(false);
         notes.get(6).setHighlighted(false);
-
+        notes.get(7).setHighlighted(false);
 
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
@@ -389,8 +388,9 @@ public class Twinkle4 implements Screen {
                 notesOriginal.get(3).noteName == notes.get(3).noteName &&
                 notesOriginal.get(4).noteName == notes.get(4).noteName &&
                 notesOriginal.get(5).noteName == notes.get(5).noteName &&
-                notesOriginal.get(6).noteName == notes.get(6).noteName
-        ) {
+                notesOriginal.get(6).noteName == notes.get(6).noteName &&
+                notesOriginal.get(7).noteName == notes.get(7).noteName
+            ) {
             nextLevel = true;
         }
         else {
@@ -402,19 +402,21 @@ public class Twinkle4 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
             notes.get(1).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
             notes.get(2).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
             notes.get(3).playSound();
-            Thread.sleep(500);
+            Thread.sleep(740);
             notes.get(4).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
             notes.get(5).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
             notes.get(6).playSound();
-            Thread.sleep(500);
+            Thread.sleep(260);
+            notes.get(7).playSound();
+            Thread.sleep(260);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -451,7 +453,7 @@ public class Twinkle4 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Twinkle5(game));
+            game.setScreen(new FurElise6(game));
             music.dispose();
         }
 
