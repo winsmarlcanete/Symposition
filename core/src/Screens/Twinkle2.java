@@ -6,28 +6,32 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 
-public class Gameplay4 implements Screen {
+public class Twinkle2 implements Screen {
 
     final Symposition game;
 
     OrthographicCamera camera;
 
     private final Skin skin;
+
     private final Stage stage;
     private final Texture bg;
     private final Table root;
@@ -55,20 +59,23 @@ public class Gameplay4 implements Screen {
     private boolean nextLevel;
 
 
-    public Gameplay4(final Symposition game){
+    public Twinkle2(final Symposition game){
 
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+
+
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar4.png"));
+
+        bg = new Texture(Gdx.files.internal("bgImages/littlestar2.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
-        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinklepart3.wav"));
+        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinklepart2.wav"));
         originalMusic.play();
 
 
@@ -98,8 +105,8 @@ public class Gameplay4 implements Screen {
 
 
         // Do
-        doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
-        Note note1 = new Note("G6",skin,doSound, false);
+        doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
+        Note note1 = new Note("F6",skin, doSound, false);
 
         note1.textbutton.addListener(new ClickListener(){
             @Override
@@ -113,8 +120,8 @@ public class Gameplay4 implements Screen {
 
 
         //Re
-        reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G6.wav"));
-        Note note2 = new Note("G6",skin, reSound, false);
+        reSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
+        Note note2 = new Note("F6",skin, reSound, false);
 
         note2.textbutton.addListener(new ClickListener(){
             @Override
@@ -127,8 +134,8 @@ public class Gameplay4 implements Screen {
 
 
         //Mi
-        miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
-        Note note3 = new Note("F6",skin, miSound, false);
+        miSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        Note note3 = new Note("E6",skin, miSound, false);
 
         note3.textbutton.addListener(new ClickListener(){
 
@@ -142,8 +149,8 @@ public class Gameplay4 implements Screen {
 
 
         //Fa
-        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
-        Note note4 = new Note("F6",skin, faSound, false);
+        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        Note note4 = new Note("E6",skin, faSound, false);
 
         note4.textbutton.addListener(new ClickListener(){
 
@@ -155,8 +162,8 @@ public class Gameplay4 implements Screen {
         });
 
         //So
-        soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
-        Note note5 = new Note("E6",skin,soSound, false);
+        soSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        Note note5 = new Note("D6",skin,soSound, false);
 
         note5.textbutton.addListener(new ClickListener(){
 
@@ -168,8 +175,8 @@ public class Gameplay4 implements Screen {
         });
 
         //La
-        laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
-        Note note6 = new Note("E6",skin, laSound, false);
+        laSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        Note note6 = new Note("D6",skin, laSound, false);
 
         note6.textbutton.addListener(new ClickListener(){
 
@@ -181,8 +188,8 @@ public class Gameplay4 implements Screen {
         });
 
         //Ti
-        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
-        Note note7 = new Note("D6",skin, tiSound, false);
+        tiSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        Note note7 = new Note("C6",skin, tiSound, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
@@ -409,7 +416,7 @@ public class Gameplay4 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Gameplay5(game));
+            game.setScreen(new Twinkle3(game));
         }
 
     }
