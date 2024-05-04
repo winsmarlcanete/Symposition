@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
@@ -37,6 +38,7 @@ public class Twinkle2 implements Screen {
     private final Stage stage;
     private final Texture bg;
     private final Table root;
+    private final Table ui;
     private final Table note;
     private final Table control;
     private final Sound doSound;
@@ -92,11 +94,22 @@ public class Twinkle2 implements Screen {
         root = new Table();
         root.setFillParent(true);
 
+        ui = new Table();
         note = new Table();
         control = new Table();
 
+        root.setDebug(true);
+        root.add(ui);
+        root.row().padTop(100);
+        root.add(note);
+        root.row().padBottom(180);
+        root.add(control).padTop(100);
+
+        stage.addActor(root);
+
         TextButton pause = new TextButton("ll", skin);
-        root.add(pause).width(130).expandX().left();
+        pause.setPosition(ui.getWidth() / 4, ui.getHeight() / 2, Align.center);
+        ui.add(pause).width(130).expandX().left().spaceRight(980).padLeft(-36);
         Window pausewindow = new Window("", skin2);
         pausewindow.setWidth(600);
         pausewindow.setHeight(400);
@@ -133,17 +146,16 @@ public class Twinkle2 implements Screen {
             }
         });
 
-        root.row().padTop(100);
-
-        root.add(note);
-        root.row().padBottom(180);
-        root.add(control).padTop(100);
-
-        stage.addActor(root);
-
-
-
-
+        TextButton playMelody = new TextButton(">", skin);
+        playMelody.setPosition(ui.getWidth() / 4 * 2, ui.getHeight() / 2, Align.center);
+        ui.add(playMelody).width(130);
+        playMelody.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                originalMusic.play();
+            }
+        });
 
         // Do
         doSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
@@ -272,30 +284,27 @@ public class Twinkle2 implements Screen {
 
 
 
-
+        note.padLeft(-38);
         //Add the textbuttons to the table for it to be rendered
         for (Note i : notes) {
-            note.add(i.textbutton);
+            note.add(i.textbutton).width(160);
         }
 
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
-        control.add(swap).width(400);
+        TextButton swap = new TextButton("Swap", skin);
+        control.add(swap).width(400).padLeft(-38);
         swap.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-
                 swapSound.play();
                 swap(selectedNote1, selectedNote2);
-
-
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override
@@ -323,7 +332,7 @@ public class Twinkle2 implements Screen {
             }
         });
 
-        TextButton play = new TextButton("Play My Song", skin);
+        TextButton play = new TextButton("Play Current Melody", skin);
         control.row();
         control.add(play).colspan(6).expand().spaceTop(20);
         play.addListener(new ClickListener(){
@@ -341,18 +350,14 @@ public class Twinkle2 implements Screen {
         notes.get(selectedNote2).setHighlighted(true);
 
 
-
-
-
-
-
     }
 
     public void swap(int pair1, int pair2){
         Collections.swap(notes, pair1, pair2);
         note.reset();
+        note.padLeft(-38);
         for (Note i : notes) {
-            note.add(i.textbutton);
+            note.add(i.textbutton).width(160);
         }
 
 

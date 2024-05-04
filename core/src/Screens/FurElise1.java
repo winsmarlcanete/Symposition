@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
@@ -108,7 +109,8 @@ public class FurElise1 implements Screen {
         stage.addActor(root);
 
         TextButton pause = new TextButton("ll", skin);
-        ui.add(pause).width(130).expandX().left();
+        pause.setPosition(ui.getWidth() / 4, ui.getHeight() / 2, Align.center);
+        ui.add(pause).width(130).expandX().left().spaceRight(980).padLeft(-36);
         Window pausewindow = new Window("", skin2);
         pausewindow.setWidth(600);
         pausewindow.setHeight(400);
@@ -146,7 +148,16 @@ public class FurElise1 implements Screen {
         });
 
         TextButton playMelody = new TextButton(">", skin);
+        playMelody.setPosition(ui.getWidth() / 4 * 2, ui.getHeight() / 2, Align.center);
         ui.add(playMelody).width(130);
+        playMelody.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                originalMusic.play();
+            }
+        });
+
 
         // Do
         firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
@@ -299,7 +310,7 @@ public class FurElise1 implements Screen {
 
 
 
-
+        note.padLeft(-38);
         //Add the textbuttons to the table for it to be rendered
         for (Note i : notes) {
             note.add(i.textbutton).width(120);
@@ -309,16 +320,13 @@ public class FurElise1 implements Screen {
 
         control.row();
         TextButton swap = new TextButton("Swap", skin);
-        control.add(swap).width(400);
+        control.add(swap).width(400).padLeft(-38);
         swap.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-
                 swapSound.play();
                 swap(selectedNote1, selectedNote2);
-
-
             }
         });
 
@@ -378,11 +386,10 @@ public class FurElise1 implements Screen {
     public void swap(int pair1, int pair2){
         Collections.swap(notes, pair1, pair2);
         note.reset();
+        note.padLeft(-38);
         for (Note i : notes) {
-            note.add(i.textbutton);
+            note.add(i.textbutton).width(120);
         }
-
-
     }
 
     public void pass(){
