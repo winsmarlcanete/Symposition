@@ -10,11 +10,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.symposition.game.Symposition;
 
 public class MenuScreen implements Screen {
@@ -23,6 +22,9 @@ public class MenuScreen implements Screen {
     final Symposition game;
     OrthographicCamera camera;
     private final Skin skin;
+    private final Skin skin2;
+    private final Skin skin3;
+    private final Skin skin4;
     private final Stage stage;
     private final SpriteBatch batch;
     private boolean clickLevelScreen = false;
@@ -43,49 +45,64 @@ public class MenuScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
-        stage = game.stage;
+//        stage = game.stage;
+        stage = new Stage(new FillViewport(Symposition.V_WIDTH, Symposition.V_WIDTH));
         Gdx.input.setInputProcessor(stage);
 
         bgimage = new Texture(Gdx.files.internal("bgImages/bg.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/menu.wav"));
         music.play();
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+        skin2 = new Skin(Gdx.files.internal("menu/play.json"));
+        skin3 = new Skin(Gdx.files.internal("menu/chapter.json"));
+        skin4 = new Skin(Gdx.files.internal("menu/exit.json"));
         sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
 
         Table root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
 
+        root.padRight(160);
+        root.padTop(10);
 
-        TextButton playbtn= new TextButton("Play", skin);
-        root.add(playbtn).width(350).expandX().left();
+        Texture texture = new Texture(Gdx.files.internal("menu/Title.png"));
+        Image title = new Image(texture);
+        root.add(title).width(200).height(30);
+        root.row().padTop(100);
 
-        root.row().space(25);
+        ImageButton play = new ImageButton(skin2);
+        root.add(play).width(100).height(15).left();
+//        TextButton tutorialBtn = new TextButton("Tutorial", skin);
+//        root.add(tutorialBtn).width(350).expandX().left();
 
-        TextButton tutorialBtn = new TextButton("Tutorial", skin);
-        root.add(tutorialBtn).width(350).expandX().left();
+        root.row().space(8);
 
-        root.row().space(25);
+        ImageButton chapter = new ImageButton(skin3);
+        root.add(chapter).width(100).height(15).left();
+//        TextButton tutorialBtn = new TextButton("Tutorial", skin);
+//        root.add(tutorialBtn).width(350).expandX().left();
 
-        TextButton optionsbtn = new TextButton("Options", skin);
-        root.add(optionsbtn).width(350).expandX().left();
+        root.row().space(8);
 
-        root.row().space(25);
+        ImageButton exit = new ImageButton(skin4);
+        root.add(exit).width(100).height(15).left();
+//        TextButton optionsbtn = new TextButton("Options", skin);
+//        root.add(optionsbtn).width(350).expandX().left();
 
-        TextButton exitbtn = new TextButton("Exit", skin);
-        root.add(exitbtn).width(350).expandX().left();
+//        root.row().space(25);
 
-        playbtn.addListener(new ChangeListener() {
+//        TextButton exitbtn = new TextButton("Exit", skin);
+//        root.add(exitbtn).width(350).expandX().left();
+
+        play.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
                 sfx1.play();
                 clickLevelScreen = true;
-
             }
         });
 
-        tutorialBtn.addListener(new ChangeListener() {
+        chapter.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 sfx1.play();
@@ -93,15 +110,7 @@ public class MenuScreen implements Screen {
             }
         });
 
-        optionsbtn.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                sfx1.play();
-
-            }
-        });
-
-        exitbtn.addListener(new ChangeListener() {
+        exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 clickExitScreen = true;

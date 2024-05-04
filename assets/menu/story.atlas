@@ -1,0 +1,30 @@
+
+story.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Story Box
+  rotate: false
+  xy: 1, 388
+  size: 456, 67
+  split: 0, 0, 0, 0
+  orig: 456, 67
+  offset: 0, 0
+  index: -1
+Story Box_Hover
+  rotate: false
+  xy: 1, 250
+  size: 456, 67
+  split: 0, 0, 0, 0
+  orig: 456, 67
+  offset: 0, 0
+  index: -1
+Story Box_Select
+  rotate: false
+  xy: 1, 319
+  size: 456, 67
+  split: 0, 0, 0, 0
+  orig: 456, 67
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"imageUp": "Play Box",
+		"imageDown": "Play Box_Select",
+		"imageOver": "Play Box_Hover"
+	}
+}
+}

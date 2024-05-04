@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"imageUp": "Exit Box",
+		"imageDown": "Exit Box_Select",
+		"imageOver": "Exit Box_Hover"
+	}
+}
+}

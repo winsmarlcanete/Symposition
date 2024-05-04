@@ -1,0 +1,30 @@
+
+chapter.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Chapters Box
+  rotate: false
+  xy: 1, 387
+  size: 456, 68
+  split: 0, 0, 0, 0
+  orig: 456, 68
+  offset: 0, 0
+  index: -1
+Chapters Box_Hover
+  rotate: false
+  xy: 1, 247
+  size: 456, 68
+  split: 0, 0, 0, 0
+  orig: 456, 68
+  offset: 0, 0
+  index: -1
+Chapters Box_Select
+  rotate: false
+  xy: 1, 317
+  size: 456, 68
+  split: 0, 0, 0, 0
+  orig: 456, 68
+  offset: 0, 0
+  index: -1
