@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -93,9 +94,48 @@ public class Twinkle2 implements Screen {
         note = new Table();
         control = new Table();
 
+        TextButton pause = new TextButton("ll", skin);
+        root.add(pause).width(130).expandX().left();
+        Window pausewindow = new Window("Pause", skin);
+        pausewindow.padLeft(20).setWidth(600);
+        pausewindow.setHeight(400);
+        pausewindow.setPosition(stage.getWidth()/2 - pausewindow.getWidth()/2, stage.getHeight()/2 - pausewindow.getHeight()/2);
+
+        TextButton con = new TextButton("Continue", skin);
+        pausewindow.add(con);
+        pausewindow.row().padTop(50);
+        TextButton exit = new TextButton("Exit", skin);
+        pausewindow.add(exit);
+        pause.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                stage.addActor(pausewindow);
+                music.pause();
+            }
+        });
+
+        con.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                stage.getRoot().removeActor(pausewindow);
+                music.play();
+            }
+        });
+
+        exit.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                game.setScreen(new LevelScreen(game));
+            }
+        });
+
+        root.row().padTop(100);
 
         root.add(note);
-        root.row();
+        root.row().padBottom(180);
         root.add(control).padTop(100);
 
         stage.addActor(root);

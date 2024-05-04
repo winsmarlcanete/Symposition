@@ -46,7 +46,7 @@ public class MenuScreen implements Screen {
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
 //        stage = game.stage;
-        stage = new Stage(new FillViewport(Symposition.V_WIDTH, Symposition.V_WIDTH));
+        stage = new Stage(new FillViewport(Symposition.V_WIDTH, Symposition.V_HEIGHT));
         Gdx.input.setInputProcessor(stage);
 
         bgimage = new Texture(Gdx.files.internal("bgImages/bg.png"));
@@ -62,27 +62,27 @@ public class MenuScreen implements Screen {
         root.setFillParent(true);
         stage.addActor(root);
 
-        root.padRight(160);
-        root.padTop(10);
+        root.padRight(150);
+        root.padTop(0);
 
         Texture texture = new Texture(Gdx.files.internal("menu/Title.png"));
         Image title = new Image(texture);
-        root.add(title).width(200).height(30);
-        root.row().padTop(100);
+        root.add(title).width(130).height(20).padLeft(4);
+        root.row().padTop(70);
 
         ImageButton play = new ImageButton(skin2);
         root.add(play).width(100).height(15).left();
 //        TextButton tutorialBtn = new TextButton("Tutorial", skin);
 //        root.add(tutorialBtn).width(350).expandX().left();
 
-        root.row().space(8);
+        root.row().space(5);
 
         ImageButton chapter = new ImageButton(skin3);
         root.add(chapter).width(100).height(15).left();
 //        TextButton tutorialBtn = new TextButton("Tutorial", skin);
 //        root.add(tutorialBtn).width(350).expandX().left();
 
-        root.row().space(8);
+        root.row().space(5);
 
         ImageButton exit = new ImageButton(skin4);
         root.add(exit).width(100).height(15).left();
