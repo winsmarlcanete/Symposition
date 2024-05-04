@@ -92,7 +92,6 @@ public class Twinkle4 implements Screen {
         note = new Table();
         control = new Table();
 
-        root.setDebug(true);
         root.add(ui);
         root.row().padTop(100);
         root.add(note);

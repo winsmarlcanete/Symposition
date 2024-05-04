@@ -227,11 +227,11 @@ public class LevelScreen implements Screen {
             game.setScreen(new Twinkle1(game));
 
         } if (playlevel2){
-            game.setScreen(new Twinkle2(game));
+            game.setScreen(new FurElise1(game));
         }
 
         if (playlevel3){
-            game.setScreen(new Twinkle3(game));
+            game.setScreen(new Waltz1(game));
         }
         if (backMenu) {
             game.setScreen(new MenuScreen(game));
