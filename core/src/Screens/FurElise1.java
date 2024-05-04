@@ -34,6 +34,7 @@ public class FurElise1 implements Screen {
     private final Stage stage;
     private final Texture bg;
     private final Table root;
+    private final Table ui;
     private final Table note;
     private final Table control;
     private final Sound firstNote;
@@ -93,11 +94,21 @@ public class FurElise1 implements Screen {
         root = new Table();
         root.setFillParent(true);
 
+        ui = new Table();
         note = new Table();
         control = new Table();
 
+        root.setDebug(true);
+        root.add(ui);
+        root.row().padTop(100);
+        root.add(note);
+        root.row().padBottom(180);
+        root.add(control).padTop(100);
+
+        stage.addActor(root);
+
         TextButton pause = new TextButton("ll", skin);
-        root.add(pause).width(130).expandX().left();
+        ui.add(pause).width(130).expandX().left();
         Window pausewindow = new Window("", skin2);
         pausewindow.setWidth(600);
         pausewindow.setHeight(400);
@@ -134,12 +145,8 @@ public class FurElise1 implements Screen {
             }
         });
 
-        root.row().padTop(100);
-        root.add(note);
-        root.row().padBottom(180);
-        root.add(control).padTop(100);
-
-        stage.addActor(root);
+        TextButton playMelody = new TextButton(">", skin);
+        ui.add(playMelody).width(130);
 
         // Do
         firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
@@ -301,7 +308,7 @@ public class FurElise1 implements Screen {
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
+        TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400);
         swap.addListener(new ClickListener(){
             @Override
@@ -315,7 +322,7 @@ public class FurElise1 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override
@@ -343,7 +350,7 @@ public class FurElise1 implements Screen {
             }
         });
 
-        TextButton play = new TextButton("Play My Song", skin);
+        TextButton play = new TextButton("Play Current Melody", skin);
         control.row();
         control.add(play).colspan(6).expand().spaceTop(20);
         play.addListener(new ClickListener(){
