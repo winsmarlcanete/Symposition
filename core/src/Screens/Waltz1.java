@@ -1,6 +1,7 @@
 package Screens;
 
 import Handlers.Note;
+import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -57,6 +58,7 @@ public class Waltz1 implements Screen {
     private final ArrayList<Note> notesOriginal;
 
     private boolean nextLevel;
+    private Hud hud;
 
 
     public Waltz1(final Symposition game){
@@ -66,12 +68,14 @@ public class Waltz1 implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+        hud = new Hud(game.batch, game);
+
 
 
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/Studio_Gameplay.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
@@ -300,6 +304,8 @@ public class Waltz1 implements Screen {
             note.add(i.textbutton).width(120);
         }
 
+
+
         control.row();
         TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400).padLeft(-38);
@@ -479,6 +485,12 @@ public class Waltz1 implements Screen {
             game.setScreen(new Waltz2(game));
             music.dispose();
         }
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+        hud.update(Gdx.graphics.getDeltaTime());
+
+
 
     }
 
