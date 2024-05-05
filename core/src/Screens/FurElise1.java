@@ -77,10 +77,10 @@ public class FurElise1 implements Screen {
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
-        music.play();
+//        music.play();
 
         originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE1.wav"));
-        originalMusic.play();
+//        originalMusic.play();
 
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
@@ -99,7 +99,6 @@ public class FurElise1 implements Screen {
         note = new Table();
         control = new Table();
 
-        root.setDebug(true);
         root.add(ui);
         root.row().padTop(100);
         root.add(note);
@@ -175,7 +174,7 @@ public class FurElise1 implements Screen {
 
 
         //Re
-        secondNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        secondNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D#6.wav"));
         Note note2 = new Note("2",skin, secondNote, false);
 
         note2.textbutton.addListener(new ClickListener(){
@@ -204,7 +203,7 @@ public class FurElise1 implements Screen {
 
 
         //Fa
-        fourthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        fourthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D#6.wav"));
         Note note4 = new Note("2",skin, fourthNote, false);
 
         note4.textbutton.addListener(new ClickListener(){
@@ -280,7 +279,6 @@ public class FurElise1 implements Screen {
         });
 
 
-
         notesOriginal = new ArrayList<>();
         notesOriginal.add(note1);
         notesOriginal.add(note2);
@@ -291,8 +289,6 @@ public class FurElise1 implements Screen {
         notesOriginal.add(note7);
         notesOriginal.add(note8);
         notesOriginal.add(note9);
-
-
 
         notes = new ArrayList<>();
         notes.add(note1);
@@ -306,7 +302,7 @@ public class FurElise1 implements Screen {
         notes.add(note9);
 
 
-        Collections.shuffle(notes);
+//        Collections.shuffle(notes);
 
 
 
@@ -445,23 +441,23 @@ public class FurElise1 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(1).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(2).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(3).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(4).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(5).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(6).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(7).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
             notes.get(8).playSound();
-            Thread.sleep(250);
+            Thread.sleep(210);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

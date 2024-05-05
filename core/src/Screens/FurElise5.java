@@ -76,10 +76,10 @@ public class FurElise5 implements Screen {
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar5.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
-        music.play();
+//        music.play();
 
         originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE5.wav"));
-        originalMusic.play();
+//        originalMusic.play();
 
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
@@ -98,7 +98,6 @@ public class FurElise5 implements Screen {
         note = new Table();
         control = new Table();
 
-        root.setDebug(true);
         root.add(ui);
         root.row().padTop(100);
         root.add(note);
@@ -286,7 +285,7 @@ public class FurElise5 implements Screen {
         notes.add(note7);
         notes.add(note8);
 
-        Collections.shuffle(notes);
+//        Collections.shuffle(notes);
 
         note.padLeft(-38);
         //Add the textbuttons to the table for it to be rendered
@@ -418,21 +417,21 @@ public class FurElise5 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(1).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(2).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(3).playSound();
             Thread.sleep(740);
             notes.get(4).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(5).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(6).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
             notes.get(7).playSound();
-            Thread.sleep(260);
+            Thread.sleep(220);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

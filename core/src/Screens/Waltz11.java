@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
@@ -28,7 +29,8 @@ public class Waltz11 implements Screen {
     OrthographicCamera camera;
 
     private final Skin skin;
-
+    private final Skin skin2;
+    private final Table ui;
     private final Stage stage;
     private final Texture bg;
     private final Table root;
@@ -71,7 +73,7 @@ public class Waltz11 implements Screen {
 
 
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
-
+        skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
@@ -93,21 +95,32 @@ public class Waltz11 implements Screen {
         root = new Table();
         root.setFillParent(true);
 
+        ui = new Table();
         note = new Table();
         control = new Table();
 
+        root.add(ui);
+        ui.padTop(100);
+        root.row().padTop(100);
+        root.add(note);
+        root.row().padBottom(180);
+        root.add(control).padTop(100);
+
+        stage.addActor(root);
+
         TextButton pause = new TextButton("ll", skin);
-        root.add(pause).width(130).expandX().left().padTop(140);
-        Window pausewindow = new Window("Pause", skin);
-        pausewindow.padLeft(20).setWidth(600);
+        pause.setPosition(ui.getWidth() / 4, ui.getHeight() / 2, Align.center);
+        ui.add(pause).width(130).expandX().left().spaceRight(980).padLeft(-36);
+        Window pausewindow = new Window("", skin2);
+        pausewindow.setWidth(600);
         pausewindow.setHeight(400);
         pausewindow.setPosition(stage.getWidth()/2 - pausewindow.getWidth()/2, stage.getHeight()/2 - pausewindow.getHeight()/2);
 
-        TextButton con = new TextButton("Continue", skin);
-        pausewindow.add(con);
-        pausewindow.row().padTop(50);
-        TextButton exit = new TextButton("Exit", skin);
-        pausewindow.add(exit);
+        TextButton con = new TextButton("Continue", skin2);
+        pausewindow.add(con).width(200).height(65);
+        pausewindow.row().padTop(30);
+        TextButton exit = new TextButton("Exit", skin2);
+        pausewindow.add(exit).width(200).height(65);
         pause.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -134,12 +147,16 @@ public class Waltz11 implements Screen {
             }
         });
 
-        root.row().padTop(100);
-        root.add(note);
-        root.row().padBottom(180);
-        root.add(control).padTop(100);
-
-        stage.addActor(root);
+        TextButton playMelody = new TextButton(">", skin);
+        playMelody.setPosition(ui.getWidth() / 4 * 2, ui.getHeight() / 2, Align.center);
+        ui.add(playMelody).width(130);
+        playMelody.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                originalMusic.play();
+            }
+        });
 
 
         sound1 = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E5.wav"));
@@ -321,31 +338,28 @@ public class Waltz11 implements Screen {
 
 
 
-
+        note.padLeft(-38);
         for (int i = 0; i<=4 ; i++){
-            note.add(notes.get(i).textbutton);
+            note.add(notes.get(i).textbutton).width(180);
         }
 
         note.row().padTop(40);
 
         for (int i = 5; i <= 9 ; i++){
-            note.add(notes.get(i).textbutton);
+            note.add(notes.get(i).textbutton).width(180);
         }
 
 
 
         control.row();
         TextButton swap = new TextButton("Swap", skin);
-        control.add(swap).width(400);
+        control.add(swap).width(400).padLeft(-38);
         swap.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-
                 swapSound.play();
                 swap(selectedNote1, selectedNote2);
-
-
             }
         });
 
@@ -377,16 +391,14 @@ public class Waltz11 implements Screen {
             }
         });
 
-        TextButton play = new TextButton("Play My Song", skin);
+        TextButton play = new TextButton("Play Current Melody", skin);
         control.row();
         control.add(play).colspan(6).expand().spaceTop(20);
         play.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-
                 play();
-
             }
         });
 
@@ -405,14 +417,15 @@ public class Waltz11 implements Screen {
     public void swap(int pair1, int pair2){
         Collections.swap(notes, pair1, pair2);
         note.reset();
+        note.padLeft(-38);
         for (int i = 0; i<=4 ; i++){
-            note.add(notes.get(i).textbutton);
+            note.add(notes.get(i).textbutton).width(180);
         }
 
         note.row().padTop(40);
 
         for (int i = 5; i <= 9 ; i++){
-            note.add(notes.get(i).textbutton);
+            note.add(notes.get(i).textbutton).width(180);
         }
 
 
@@ -485,17 +498,17 @@ public class Waltz11 implements Screen {
             notes.get(2).playSound();
             Thread.sleep(250);
             notes.get(3).playSound();
-            Thread.sleep(250);
+            Thread.sleep(110);
             notes.get(4).playSound();
-            Thread.sleep(250);
+            Thread.sleep(110);
             notes.get(5).playSound();
-            Thread.sleep(250);
+            Thread.sleep(130);
             notes.get(6).playSound();
-            Thread.sleep(250);
+            Thread.sleep(110);
             notes.get(7).playSound();
-            Thread.sleep(250);
+            Thread.sleep(110);
             notes.get(8).playSound();
-            Thread.sleep(250);
+            Thread.sleep(110);
             notes.get(9).playSound();
             Thread.sleep(250);
 
@@ -537,6 +550,7 @@ public class Waltz11 implements Screen {
 
         if (nextLevel) {
             game.setScreen(new Waltz10(game));
+            music.dispose();
         }
 
     }
@@ -565,6 +579,7 @@ public class Waltz11 implements Screen {
     public void dispose() {
         skin.dispose();
         stage.dispose();
+        music.dispose();
     }
 }
 

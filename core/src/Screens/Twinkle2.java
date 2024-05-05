@@ -412,19 +412,19 @@ public class Twinkle2 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(1).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(2).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(3).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(4).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(5).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
             notes.get(6).playSound();
-            Thread.sleep(500);
+            Thread.sleep(630);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

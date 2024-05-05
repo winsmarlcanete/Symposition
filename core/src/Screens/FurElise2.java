@@ -46,6 +46,9 @@ public class FurElise2 implements Screen {
     private final Sound sixthNote;
     private final Sound seventhNote;
     private final Sound eighthNote;
+    private final Sound ninthNote;
+    private final Sound tenthNote;
+    private final Sound eleventhNote;
     private final Sound swapSound;
     private final Sound passSound;
     private final Sound wrongSound;
@@ -98,8 +101,8 @@ public class FurElise2 implements Screen {
         note = new Table();
         control = new Table();
 
-        root.setDebug(true);
         root.add(ui);
+        ui.padTop(100);
         root.row().padTop(100);
         root.add(note);
         root.row().padBottom(180);
@@ -262,6 +265,42 @@ public class FurElise2 implements Screen {
             }
         });
 
+        ninthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E5.wav"));
+        Note note9 = new Note("2",skin, ninthNote, false);
+
+        note9.textbutton.addListener(new ClickListener(){
+
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                note9.playSound();
+            }
+        });
+
+        tenthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        Note note10 = new Note("6",skin, tenthNote, false);
+
+        note10.textbutton.addListener(new ClickListener(){
+
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                note10.playSound();
+            }
+        });
+
+        eleventhNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D#6.wav"));
+        Note note11 = new Note("7",skin, eleventhNote, false);
+
+        note11.textbutton.addListener(new ClickListener(){
+
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                note11.playSound();
+            }
+        });
+
         notesOriginal = new ArrayList<>();
         notesOriginal.add(note1);
         notesOriginal.add(note2);
@@ -271,7 +310,9 @@ public class FurElise2 implements Screen {
         notesOriginal.add(note6);
         notesOriginal.add(note7);
         notesOriginal.add(note8);
-
+        notesOriginal.add(note9);
+        notesOriginal.add(note10);
+        notesOriginal.add(note11);
 
 
         notes = new ArrayList<>();
@@ -283,16 +324,22 @@ public class FurElise2 implements Screen {
         notes.add(note6);
         notes.add(note7);
         notes.add(note8);
+        notes.add(note9);
+        notes.add(note10);
+        notes.add(note11);
 
         Collections.shuffle(notes);
 
         note.padLeft(-38);
-        //Add the textbuttons to the table for it to be rendered
-        for (Note i : notes) {
-            note.add(i.textbutton).width(120);
+        for (int i = 0; i<=5 ; i++){
+            note.add(notes.get(i).textbutton).width(140);
         }
 
+        note.row().padTop(40);
 
+        for (int i = 6; i <= 10 ; i++){
+            note.add(notes.get(i).textbutton).width(140);
+        }
 
         control.row();
         TextButton swap = new TextButton("Swap", skin);
@@ -356,8 +403,14 @@ public class FurElise2 implements Screen {
         Collections.swap(notes, pair1, pair2);
         note.reset();
         note.padLeft(-38);
-        for (Note i : notes) {
-            note.add(i.textbutton).width(120);
+        for (int i = 0; i<=5 ; i++){
+            note.add(notes.get(i).textbutton).width(140);
+        }
+
+        note.row().padTop(40);
+
+        for (int i = 6; i <= 10 ; i++){
+            note.add(notes.get(i).textbutton).width(140);
         }
     }
 
@@ -378,6 +431,9 @@ public class FurElise2 implements Screen {
         notes.get(5).setHighlighted(false);
         notes.get(6).setHighlighted(false);
         notes.get(7).setHighlighted(false);
+        notes.get(8).setHighlighted(false);
+        notes.get(9).setHighlighted(false);
+        notes.get(10).setHighlighted(false);
 
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
@@ -392,7 +448,10 @@ public class FurElise2 implements Screen {
                 notesOriginal.get(4).noteName == notes.get(4).noteName &&
                 notesOriginal.get(5).noteName == notes.get(5).noteName &&
                 notesOriginal.get(6).noteName == notes.get(6).noteName &&
-                notesOriginal.get(7).noteName == notes.get(7).noteName
+                notesOriginal.get(7).noteName == notes.get(7).noteName &&
+                notesOriginal.get(8).noteName == notes.get(8).noteName &&
+                notesOriginal.get(9).noteName == notes.get(9).noteName &&
+                notesOriginal.get(10).noteName == notes.get(10).noteName
         ) {
             nextLevel = true;
         }
@@ -405,20 +464,26 @@ public class FurElise2 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(1).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(2).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(3).playSound();
             Thread.sleep(700);
             notes.get(4).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(5).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(6).playSound();
-            Thread.sleep(250);
+            Thread.sleep(220);
             notes.get(7).playSound();
+            Thread.sleep(700);
+            notes.get(8).playSound();
+            Thread.sleep(200);
+            notes.get(9).playSound();
+            Thread.sleep(220);
+            notes.get(10).playSound();
             Thread.sleep(250);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
