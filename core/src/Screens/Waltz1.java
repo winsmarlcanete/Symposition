@@ -1,7 +1,6 @@
 package Screens;
 
 import Handlers.Note;
-import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -58,7 +57,6 @@ public class Waltz1 implements Screen {
     private final ArrayList<Note> notesOriginal;
 
     private boolean nextLevel;
-    private Hud hud;
 
 
     public Waltz1(final Symposition game){
@@ -68,14 +66,12 @@ public class Waltz1 implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        hud = new Hud(game.batch, game);
-
 
 
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
-        bg = new Texture(Gdx.files.internal("bgImages/Studio_Gameplay.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
@@ -299,9 +295,8 @@ public class Waltz1 implements Screen {
         Collections.shuffle(notes);
 
         note.padLeft(-38);
-        //Add the textbuttons to the table for it to be rendered
-        for (Note i : notes) {
-            note.add(i.textbutton).width(120);
+        for (int i = 0; i<=7 ; i++){
+            note.add(notes.get(i).textbutton).width(140);
         }
 
 
@@ -358,7 +353,6 @@ public class Waltz1 implements Screen {
         });
 
 
-
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
 
@@ -375,7 +369,7 @@ public class Waltz1 implements Screen {
         note.reset();
         note.padLeft(-38);
         for (Note i : notes) {
-            note.add(i.textbutton).width(120);
+            note.add(i.textbutton).width(140);
         }
     }
 
@@ -431,15 +425,15 @@ public class Waltz1 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(500);
+            Thread.sleep(540);
             notes.get(1).playSound();
             Thread.sleep(250);
             notes.get(2).playSound();
             Thread.sleep(250);
             notes.get(3).playSound();
-            Thread.sleep(500);
+            Thread.sleep(540);
             notes.get(4).playSound();
-            Thread.sleep(500);
+            Thread.sleep(540);
             notes.get(5).playSound();
             Thread.sleep(250);
             notes.get(6).playSound();
@@ -482,15 +476,9 @@ public class Waltz1 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new Waltz2(game));
+            game.setScreen(new Waltz4(game));
             music.dispose();
         }
-
-        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
-        hud.stage.draw();
-        hud.update(Gdx.graphics.getDeltaTime());
-
-
 
     }
 
@@ -521,3 +509,4 @@ public class Waltz1 implements Screen {
         music.dispose();
     }
 }
+
