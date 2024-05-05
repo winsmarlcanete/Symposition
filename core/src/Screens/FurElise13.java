@@ -23,7 +23,7 @@ import com.symposition.game.Symposition;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FurElise5 implements Screen {
+public class FurElise13 implements Screen {
 
     final Symposition game;
 
@@ -61,7 +61,7 @@ public class FurElise5 implements Screen {
     private boolean nextLevel;
 
 
-    public FurElise5(final Symposition game){
+    public FurElise13(final Symposition game){
 
         this.game = game;
 
@@ -76,10 +76,10 @@ public class FurElise5 implements Screen {
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar5.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
-        music.play();
+//        music.play();
 
-        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE5.wav"));
-        originalMusic.play();
+        originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE6.wav"));
+//        originalMusic.play();
 
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
@@ -157,7 +157,7 @@ public class FurElise5 implements Screen {
         });
 
         // Do
-        firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/B5.wav"));
+        firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E5.wav"));
         Note note1 = new Note("1",skin, firstNote, false);
 
         note1.textbutton.addListener(new ClickListener(){
@@ -172,7 +172,7 @@ public class FurElise5 implements Screen {
 
 
         //Re
-        secondNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
+        secondNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
         Note note2 = new Note("2",skin, secondNote, false);
 
         note2.textbutton.addListener(new ClickListener(){
@@ -201,7 +201,7 @@ public class FurElise5 implements Screen {
 
 
         //Fa
-        fourthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        fourthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
         Note note4 = new Note("4",skin, fourthNote, false);
 
         note4.textbutton.addListener(new ClickListener(){
@@ -214,8 +214,8 @@ public class FurElise5 implements Screen {
         });
 
         //So
-        fifthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/G5.wav"));
-        Note note5 = new Note("5",skin, fifthNote, false);
+        fifthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E5.wav"));
+        Note note5 = new Note("1",skin, fifthNote, false);
 
         note5.textbutton.addListener(new ClickListener(){
 
@@ -227,8 +227,8 @@ public class FurElise5 implements Screen {
         });
 
         //La
-        sixthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/F6.wav"));
-        Note note6 = new Note("6",skin, sixthNote, false);
+        sixthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        Note note6 = new Note("3",skin, sixthNote, false);
 
         note6.textbutton.addListener(new ClickListener(){
 
@@ -240,7 +240,7 @@ public class FurElise5 implements Screen {
         });
 
         //Ti
-        seventhNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        seventhNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
         Note note7 = new Note("4",skin, seventhNote, false);
 
         note7.textbutton.addListener(new ClickListener(){
@@ -252,8 +252,8 @@ public class FurElise5 implements Screen {
             }
         });
 
-        eighthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
-        Note note8 = new Note("3",skin, eighthNote, false);
+        eighthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/B5.wav"));
+        Note note8 = new Note("5",skin, eighthNote, false);
 
         note8.textbutton.addListener(new ClickListener(){
 
@@ -274,7 +274,6 @@ public class FurElise5 implements Screen {
         notesOriginal.add(note7);
         notesOriginal.add(note8);
 
-
         notes = new ArrayList<>();
         notes.add(note1);
         notes.add(note2);
@@ -285,7 +284,9 @@ public class FurElise5 implements Screen {
         notes.add(note7);
         notes.add(note8);
 
-        Collections.shuffle(notes);
+//        Collections.shuffle(notes);
+
+
 
         note.padLeft(-38);
         //Add the textbuttons to the table for it to be rendered
@@ -355,6 +356,7 @@ public class FurElise5 implements Screen {
         notes.get(selectedNote1).setHighlighted(true);
         notes.get(selectedNote2).setHighlighted(true);
 
+
     }
 
     public void swap(int pair1, int pair2){
@@ -423,7 +425,7 @@ public class FurElise5 implements Screen {
             notes.get(2).playSound();
             Thread.sleep(220);
             notes.get(3).playSound();
-            Thread.sleep(740);
+            Thread.sleep(700);
             notes.get(4).playSound();
             Thread.sleep(220);
             notes.get(5).playSound();
@@ -436,12 +438,7 @@ public class FurElise5 implements Screen {
             throw new RuntimeException(e);
         }
 
-
-
     }
-
-
-
 
     @Override
     public void show() {
@@ -468,7 +465,7 @@ public class FurElise5 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new FurElise6(game));
+            game.setScreen(new FurElise14(game));
             music.dispose();
         }
 

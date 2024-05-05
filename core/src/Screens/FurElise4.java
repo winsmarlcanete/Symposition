@@ -76,10 +76,10 @@ public class FurElise4 implements Screen {
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar4.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
-//        music.play();
+        music.play();
 
         originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE4.wav"));
-//        originalMusic.play();
+        originalMusic.play();
 
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
@@ -277,7 +277,7 @@ public class FurElise4 implements Screen {
         notes.add(note7);
         notes.add(note8);
 
-//        Collections.shuffle(notes);
+        Collections.shuffle(notes);
 
         note.padLeft(-38);
         //Add the textbuttons to the table for it to be rendered
