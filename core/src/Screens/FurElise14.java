@@ -505,7 +505,9 @@ public class FurElise14 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            music.dispose();
+
+            music.stop();
+            game.setScreen(new ScoreScreenFur(game));
         }
 
 

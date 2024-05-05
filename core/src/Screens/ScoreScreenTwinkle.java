@@ -83,12 +83,13 @@ public class ScoreScreenTwinkle implements Screen {
         sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
 
         next.addListener(new ClickListener(){
+
             @Override
-            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                super.exit(event, x, y, pointer, toActor);
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
                 sfx1.play();
                 exit = true;
-
+                music.stop();
             }
         });
 
