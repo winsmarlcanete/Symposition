@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 
-public class ScoreScreen implements Screen {
+public class ScoreScreenTwinkle implements Screen {
     final Symposition game;
     OrthographicCamera camera;
     private Stage stage;
@@ -21,41 +21,53 @@ public class ScoreScreen implements Screen {
     private TextButton continueButton;
     private Label titleLabel;
     private final Table root;
+    private final Table musicalnote;
+    private final Table details;
     private final Skin skin;
+    private final Skin fontskin;
+    private Image musicalnoteImage;
+    private Label title;
+    private Label timeCompletion;
 
-    public ScoreScreen(final Symposition game){
+    public ScoreScreenTwinkle(final Symposition game){
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        bg = new Texture(Gdx.files.internal("bgImages/scorebg.jpg"));
+        bg = new Texture(Gdx.files.internal("bgImages/Twinkle_Score.png"));
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+        fontskin = new Skin(Gdx.files.internal("menu/label/regular.json"));
 
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
         root = new Table();
+        musicalnote = new Table();
+        details = new Table();
         root.setFillParent(true);
         stage.addActor(root);
 
-        titleLabel = new Label("Awesome!", skin);
-        root.add(titleLabel).padBottom(50).row();
+        musicalnoteImage =  new Image(new Texture(Gdx.files.internal("other/ttsMusicalNote.png")));
 
-        Table ui = new Table();
-        root.row();
-        root.add(ui);
+        root.add(musicalnote).expandX();
+        root.add(details).expandX();
 
-        continueButton = new TextButton("Continue", skin);
-        ui.add(continueButton);
+        musicalnote.add(musicalnoteImage).width(400).height(500);
 
-        continueButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                game.setScreen(new LevelScreen(game));
-            }
-        });
+        timeCompletion = new Label(String.format("%03d", game.levelTimer), fontskin);
+
+        details.add(timeCompletion).padRight(140).padTop(45);
+
+
+
+
+
+
+
+//        Table ui = new Table();
+//        root.row();
+
     }
 
     @Override
@@ -75,6 +87,7 @@ public class ScoreScreen implements Screen {
 
         game.batch.begin();
         game.batch.draw(bg, 0, 0,800,500);
+
         game.batch.end();
 
         stage.act();
