@@ -225,16 +225,19 @@ public class LevelScreen implements Screen {
         if (playlevel1) {
 
             game.setScreen(new Twinkle1(game));
-
+            music.dispose();
         } if (playlevel2){
             game.setScreen(new FurElise1(game));
+            music.dispose();
         }
 
         if (playlevel3){
             game.setScreen(new Waltz1(game));
+            music.dispose();
         }
         if (backMenu) {
             game.setScreen(new MenuScreen(game));
+            music.dispose();
         }
 
     }
@@ -266,6 +269,7 @@ public class LevelScreen implements Screen {
         renderer.dispose();
         world.dispose();
         b2dr.dispose();
+        music.dispose();
 
     }
 }

@@ -120,7 +120,6 @@ public class FurElise1 implements Screen {
         root.add(control).padTop(100);
 
         stage.addActor(root);
-
         ImageButton pause = new ImageButton(skin8);
         ui.add(pause).padBottom(200);
         Window pausewindow = new Window("", skin);

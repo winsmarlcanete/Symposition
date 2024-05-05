@@ -99,6 +99,7 @@ public class MenuScreen implements Screen {
             public void changed(ChangeEvent event, Actor actor) {
                 sfx1.play();
                 clickLevelScreen = true;
+                music.dispose();
             }
         });
 
@@ -114,6 +115,7 @@ public class MenuScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 clickExitScreen = true;
+                music.dispose();
             }
         });
 
@@ -142,7 +144,7 @@ public class MenuScreen implements Screen {
         if (clickLevelScreen) {
             game.setScreen(new LevelScreen(game));
             music.stop();
-
+            music.dispose();
 
         }
 
@@ -150,7 +152,6 @@ public class MenuScreen implements Screen {
             dispose();
             Gdx.app.exit();
             System.exit(-1);
-
         }
 
     }

@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import java.awt.*;
+
 public class Symposition extends Game {
 	public SpriteBatch batch;
 	public static final int V_WIDTH = 400;
@@ -24,7 +26,7 @@ public class Symposition extends Game {
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Waltz1(this));
+		setScreen(new MenuScreen(this));
 
 	}
 
