@@ -1,15 +1,23 @@
 {
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-	"M4JAXUGtNUza4eSHRDfzLiZAttf": {
-		"file": "M4JAXUGtNUza4eSHRDfzLiZA.ttf.fnt",
-		"scaledSize": -1,
+	"Regular": {
+		"file": "JosefinSans-Regular.fnt",
+		"scaledSize": 15,
 		"markupEnabled": false,
 		"flip": false
 	}
 },
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
-		"font": "M4JAXUGtNUza4eSHRDfzLiZAttf"
+		"font": "Regular"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {

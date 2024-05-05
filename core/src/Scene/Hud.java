@@ -34,7 +34,7 @@ public class Hud extends Matrix4 {
 
         viewport = new FitViewport(Symposition.V_WIDTH, Symposition.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
-        skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
+        skin = new Skin(Gdx.files.internal("menu/Label/regular.json"));
 
         Table table = new Table();
         table.top();

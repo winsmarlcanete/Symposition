@@ -1,13 +1,13 @@
 
 regular.png
-size: 512, 256
+size: 512, 512
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-M4JAXUGtNUza4eSHRDfzLiZA.ttf_0
+JosefinSans-Regular
   rotate: false
-  xy: 1, 127
-  size: 256, 128
-  orig: 256, 128
+  xy: 1, 263
+  size: 506, 242
+  orig: 506, 242
   offset: 0, 0
   index: -1

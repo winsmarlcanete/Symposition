@@ -1,21 +1,29 @@
 {
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-	"M4JAXUGtNUza4eSHRDfzLiZAttf": {
-		"file": "M4JAXUGtNUza4eSHRDfzLiZA.ttf.fnt",
+	"Regular": {
+		"file": "JosefinSans-Regular.fnt",
 		"scaledSize": -1,
 		"markupEnabled": false,
 		"flip": false
 	},
-	"xWxKPIm4bOu4uZV6HHWpVOttf": {
-		"file": "91xWxKPIm4bOu4uZV6HHWpVO.ttf.fnt",
+	"thin": {
+		"file": "JosefinSans-Thin.fnt",
 		"scaledSize": -1,
 		"markupEnabled": false,
 		"flip": false
 	}
 },
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
-		"font": "xWxKPIm4bOu4uZV6HHWpVOttf"
+		"font": "thin"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
