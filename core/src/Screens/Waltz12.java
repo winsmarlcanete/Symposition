@@ -305,7 +305,7 @@ public class Waltz12 implements Screen {
             }
         });
 
-        sound13 = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        sound13 = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E7.wav"));
         Note note13 = new Note("E7",skin, sound13, false);
 
         note13.textbutton.addListener(new ClickListener(){
@@ -317,7 +317,7 @@ public class Waltz12 implements Screen {
             }
         });
 
-        sound14 = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E6.wav"));
+        sound14 = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/E7.wav"));
         Note note14 = new Note("E7",skin, sound14, false);
 
         note14.textbutton.addListener(new ClickListener(){
@@ -406,7 +406,7 @@ public class Waltz12 implements Screen {
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
+        TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400);
         swap.addListener(new ClickListener(){
             @Override
@@ -420,7 +420,7 @@ public class Waltz12 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override

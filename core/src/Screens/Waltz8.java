@@ -181,7 +181,7 @@ public class Waltz8 implements Screen {
 
 
         //Fa
-        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
+        faSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D7.wav"));
         Note note4 = new Note("D7",skin, faSound, false);
 
         note4.textbutton.addListener(new ClickListener(){
@@ -266,7 +266,7 @@ public class Waltz8 implements Screen {
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
+        TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400);
         swap.addListener(new ClickListener(){
             @Override
@@ -280,7 +280,7 @@ public class Waltz8 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override

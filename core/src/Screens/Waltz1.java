@@ -289,7 +289,7 @@ public class Waltz1 implements Screen {
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
+        TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400);
         swap.addListener(new ClickListener(){
             @Override
@@ -303,7 +303,7 @@ public class Waltz1 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override
@@ -331,15 +331,28 @@ public class Waltz1 implements Screen {
             }
         });
 
-        TextButton play = new TextButton("Play My Song", skin);
+        TextButton play = new TextButton("My Melody", skin);
         control.row();
-        control.add(play).colspan(6).expand().spaceTop(20);
+        control.add(play).width(400).spaceTop(25);
         play.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
 
                 play();
+
+            }
+        });
+
+        TextButton orig = new TextButton("Initial Melody", skin);
+
+        control.add(orig).width(500).spaceTop(25);
+        orig.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+
+                originalMusic.play();
 
             }
         });
@@ -417,15 +430,15 @@ public class Waltz1 implements Screen {
 
         try {
             notes.get(0).playSound();
-            Thread.sleep(250);
+            Thread.sleep(500);
             notes.get(1).playSound();
             Thread.sleep(250);
             notes.get(2).playSound();
             Thread.sleep(250);
             notes.get(3).playSound();
-            Thread.sleep(250);
+            Thread.sleep(500);
             notes.get(4).playSound();
-            Thread.sleep(250);
+            Thread.sleep(500);
             notes.get(5).playSound();
             Thread.sleep(250);
             notes.get(6).playSound();

@@ -391,7 +391,7 @@ public class Waltz10 implements Screen {
 
 
         control.row();
-        TextButton swap = new TextButton("Swapper", skin);
+        TextButton swap = new TextButton("Swap", skin);
         control.add(swap).width(400);
         swap.addListener(new ClickListener(){
             @Override
@@ -405,7 +405,7 @@ public class Waltz10 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
+        TextButton passer = new TextButton("Pass", skin);
         control.add(passer).width(400);
         passer.addListener(new ClickListener(){
             @Override
