@@ -77,10 +77,10 @@ public class FurElise1 implements Screen {
 
         bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
-//        music.play();
+        music.play();
 
         originalMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/FE1.wav"));
-//        originalMusic.play();
+        originalMusic.play();
 
 
         swapSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx2.wav"));
@@ -302,7 +302,7 @@ public class FurElise1 implements Screen {
         notes.add(note9);
 
 
-//        Collections.shuffle(notes);
+        Collections.shuffle(notes);
 
 
 

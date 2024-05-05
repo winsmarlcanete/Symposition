@@ -23,7 +23,7 @@ import com.symposition.game.Symposition;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FurElise5 implements Screen {
+public class FurElise12 implements Screen {
 
     final Symposition game;
 
@@ -61,7 +61,7 @@ public class FurElise5 implements Screen {
     private boolean nextLevel;
 
 
-    public FurElise5(final Symposition game){
+    public FurElise12(final Symposition game){
 
         this.game = game;
 
@@ -468,7 +468,7 @@ public class FurElise5 implements Screen {
         stage.draw();
 
         if (nextLevel) {
-            game.setScreen(new FurElise6(game));
+            game.setScreen(new FurElise13(game));
             music.dispose();
         }
 
