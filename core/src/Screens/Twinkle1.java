@@ -1,6 +1,7 @@
 package Screens;
 
 import Handlers.Note;
+import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -57,6 +58,8 @@ public class Twinkle1 implements Screen {
     private final ArrayList<Note> notesOriginal;
 
     private boolean nextLevel;
+    private Hud hud;
+    private Boolean pauseTimer = false;
 
 
     public Twinkle1(final Symposition game){
@@ -66,13 +69,15 @@ public class Twinkle1 implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+        hud = new Hud(game.batch, game);
+
 
 
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar1.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/Studio_Gameplay.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
@@ -123,6 +128,8 @@ public class Twinkle1 implements Screen {
                 super.clicked(event, x, y);
                 stage.addActor(pausewindow);
                 music.pause();
+                pauseTimer = true;
+
             }
         });
 
@@ -132,6 +139,7 @@ public class Twinkle1 implements Screen {
                 super.clicked(event, x, y);
                 stage.getRoot().removeActor(pausewindow);
                 music.play();
+                pauseTimer = false;
             }
         });
 
@@ -463,6 +471,13 @@ public class Twinkle1 implements Screen {
             game.setScreen(new Twinkle2(game));
             music.dispose();
         }
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+        if(!pauseTimer) {
+            hud.update(Gdx.graphics.getDeltaTime());
+        }
+
 
     }
 
