@@ -59,6 +59,7 @@ public class Twinkle1 implements Screen {
 
     private boolean nextLevel;
     private Hud hud;
+    private Boolean pauseTimer = false;
 
 
     public Twinkle1(final Symposition game){
@@ -127,6 +128,8 @@ public class Twinkle1 implements Screen {
                 super.clicked(event, x, y);
                 stage.addActor(pausewindow);
                 music.pause();
+                pauseTimer = true;
+
             }
         });
 
@@ -136,6 +139,7 @@ public class Twinkle1 implements Screen {
                 super.clicked(event, x, y);
                 stage.getRoot().removeActor(pausewindow);
                 music.play();
+                pauseTimer = false;
             }
         });
 
@@ -470,7 +474,10 @@ public class Twinkle1 implements Screen {
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
-        hud.update(Gdx.graphics.getDeltaTime());
+        if(!pauseTimer) {
+            hud.update(Gdx.graphics.getDeltaTime());
+        }
+
 
     }
 
