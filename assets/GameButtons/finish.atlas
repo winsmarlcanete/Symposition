@@ -1,0 +1,22 @@
+
+finish.png
+size: 64, 64
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Finish
+  rotate: false
+  xy: 1, 21
+  size: 26, 18
+  split: 0, 0, 0, 0
+  orig: 26, 18
+  offset: 0, 0
+  index: -1
+Finish_Select
+  rotate: false
+  xy: 1, 1
+  size: 26, 18
+  split: 0, 0, 0, 0
+  orig: 26, 18
+  offset: 0, 0
+  index: -1

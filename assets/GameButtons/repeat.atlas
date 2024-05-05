@@ -1,0 +1,22 @@
+
+repeat.png
+size: 64, 64
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Repeat
+  rotate: false
+  xy: 1, 24
+  size: 22, 21
+  split: 0, 0, 0, 0
+  orig: 22, 21
+  offset: 0, 0
+  index: -1
+Repeat_Select
+  rotate: false
+  xy: 1, 1
+  size: 22, 21
+  split: 0, 0, 0, 0
+  orig: 22, 21
+  offset: 0, 0
+  index: -1

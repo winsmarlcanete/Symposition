@@ -1,0 +1,22 @@
+
+1.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+1
+  rotate: false
+  xy: 1, 173
+  size: 170, 170
+  split: 0, 0, 0, 0
+  orig: 170, 170
+  offset: 0, 0
+  index: -1
+1_Highlight
+  rotate: false
+  xy: 1, 1
+  size: 170, 170
+  split: 0, 0, 0, 0
+  orig: 170, 170
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,8 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"imageUp": "4",
+		"focused": "4_Highlight"
+	}
+}
+}

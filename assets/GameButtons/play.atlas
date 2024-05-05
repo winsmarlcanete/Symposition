@@ -1,0 +1,22 @@
+
+play.png
+size: 64, 64
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Play
+  rotate: false
+  xy: 1, 24
+  size: 18, 21
+  split: 0, 0, 0, 0
+  orig: 18, 21
+  offset: 0, 0
+  index: -1
+Play_Select
+  rotate: false
+  xy: 1, 1
+  size: 18, 21
+  split: 0, 0, 0, 0
+  orig: 18, 21
+  offset: 0, 0
+  index: -1

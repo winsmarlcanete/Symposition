@@ -30,7 +30,7 @@ public class Note {
     public void setHighlighted(boolean highlighted) {
 
         if (highlighted) {
-            textbutton.setColor(1, 0, 1, 1);
+            textbutton.setColor(0.678f, 0.847f, 0.902f, 1);
         }
         if (!highlighted) {
             textbutton.setColor(1, 1, 1, 1);

@@ -10,10 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -30,8 +27,12 @@ public class FurElise12 implements Screen {
     OrthographicCamera camera;
 
     private final Skin skin;
-    private final Skin skin2;
-
+    private final Skin skin3;
+    private final Skin skin4;
+    private final Skin skin5;
+    private final Skin skin6;
+    private final Skin skin7;
+    private final Skin skin8;
     private final Stage stage;
     private final Texture bg;
     private final Table root;
@@ -66,15 +67,19 @@ public class FurElise12 implements Screen {
         this.game = game;
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, 400, 200);
 
 
 
-        skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
-        skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
+        skin = new Skin(Gdx.files.internal("horizon/horizon.json"));
+        skin3 = new Skin(Gdx.files.internal("GameButtons/swap.json"));
+        skin4 = new Skin(Gdx.files.internal("GameButtons/pass.json"));
+        skin5 = new Skin(Gdx.files.internal("GameButtons/play.json"));
+        skin6 = new Skin(Gdx.files.internal("GameButtons/repeat.json"));
+        skin7 = new Skin(Gdx.files.internal("GameButtons/finish.json"));
+        skin8 = new Skin(Gdx.files.internal("GameButtons/pause.json"));
 
-
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar5.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/FE/Studio12.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 
@@ -98,7 +103,7 @@ public class FurElise12 implements Screen {
         note = new Table();
         control = new Table();
 
-        root.add(ui);
+        root.add(ui).left().padTop(200);
         root.row().padTop(100);
         root.add(note);
         root.row().padBottom(180);
@@ -106,18 +111,17 @@ public class FurElise12 implements Screen {
 
         stage.addActor(root);
 
-        TextButton pause = new TextButton("ll", skin);
-        pause.setPosition(ui.getWidth() / 4, ui.getHeight() / 2, Align.center);
-        ui.add(pause).width(130).expandX().left().spaceRight(980).padLeft(-36);
-        Window pausewindow = new Window("", skin2);
+        ImageButton pause = new ImageButton(skin8);
+        ui.add(pause).padBottom(200);
+        Window pausewindow = new Window("", skin);
         pausewindow.setWidth(600);
         pausewindow.setHeight(400);
         pausewindow.setPosition(stage.getWidth()/2 - pausewindow.getWidth()/2, stage.getHeight()/2 - pausewindow.getHeight()/2);
 
-        TextButton con = new TextButton("Continue", skin2);
+        TextButton con = new TextButton("Continue", skin);
         pausewindow.add(con).width(200).height(65);
         pausewindow.row().padTop(30);
-        TextButton exit = new TextButton("Exit", skin2);
+        TextButton exit = new TextButton("Exit", skin);
         pausewindow.add(exit).width(200).height(65);
         pause.addListener(new ClickListener(){
             @Override
@@ -145,16 +149,6 @@ public class FurElise12 implements Screen {
             }
         });
 
-        TextButton playMelody = new TextButton(">", skin);
-        playMelody.setPosition(ui.getWidth() / 4 * 2, ui.getHeight() / 2, Align.center);
-        ui.add(playMelody).width(130);
-        playMelody.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                originalMusic.play();
-            }
-        });
 
         // Do
         firstNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/B5.wav"));
@@ -295,9 +289,13 @@ public class FurElise12 implements Screen {
 
 
 
-        control.row();
-        TextButton swap = new TextButton("Swapper", skin);
-        control.add(swap).width(400).padLeft(-38);
+        control.row().padTop(160);
+        Table control1 = new Table();
+        control.add(control1).center().padLeft(460);
+
+        control1.row();
+        ImageButton swap = new ImageButton(skin3);
+        control1.add(swap).width(150);
         swap.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -310,8 +308,8 @@ public class FurElise12 implements Screen {
             }
         });
 
-        TextButton passer = new TextButton("Passer", skin);
-        control.add(passer).width(400);
+        ImageButton passer = new ImageButton(skin4);
+        control1.add(passer).width(150);
         passer.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -325,29 +323,36 @@ public class FurElise12 implements Screen {
             }
         });
 
-        TextButton finisher = new TextButton("Finish", skin);
-        control.add(finisher).width(400);
-        finisher.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
+        Table control2 = new Table();
+        control.add(control2).right().padLeft(300);
 
-                finish();
-
-
-            }
-        });
-
-        TextButton play = new TextButton("Play My Song", skin);
-        control.row();
-        control.add(play).colspan(6).expand().spaceTop(20);
+        ImageButton play = new ImageButton(skin5);
+        control2.add(play).width(40).space(20);
         play.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-
                 play();
+            }
+        });
 
+        ImageButton repeat = new ImageButton(skin6);
+        control2.add(repeat).width(40).space(20);
+        repeat.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                originalMusic.play();
+            }
+        });
+
+        ImageButton finisher = new ImageButton(skin7);
+        control2.add(finisher).width(40).space(23);
+        finisher.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                finish();
             }
         });
 
@@ -405,7 +410,7 @@ public class FurElise12 implements Screen {
                 notesOriginal.get(5).noteName == notes.get(5).noteName &&
                 notesOriginal.get(6).noteName == notes.get(6).noteName &&
                 notesOriginal.get(7).noteName == notes.get(7).noteName
-            ) {
+        ) {
             nextLevel = true;
         }
         else {
@@ -461,7 +466,7 @@ public class FurElise12 implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.batch.draw(bg, 0, 0,800,500);
+        game.batch.draw(bg, 0, 0,400,200);
         game.batch.end();
 
         stage.act();

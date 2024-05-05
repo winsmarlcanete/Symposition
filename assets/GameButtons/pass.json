@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"imageUp": "Pass",
+		"imageDown": "Pass_Select",
+		"imageOver": "Pass_Hover"
+	}
+}
+}

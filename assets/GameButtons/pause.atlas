@@ -1,0 +1,22 @@
+
+pause.png
+size: 64, 64
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Pause
+  rotate: false
+  xy: 1, 25
+  size: 25, 22
+  split: 0, 0, 0, 0
+  orig: 25, 22
+  offset: 0, 0
+  index: -1
+Pause_Select
+  rotate: false
+  xy: 1, 1
+  size: 25, 22
+  split: 0, 0, 0, 0
+  orig: 25, 22
+  offset: 0, 0
+  index: -1

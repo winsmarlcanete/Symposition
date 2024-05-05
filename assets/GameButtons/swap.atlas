@@ -1,0 +1,30 @@
+
+swap.png
+size: 256, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Swap
+  rotate: false
+  xy: 1, 163
+  size: 187, 79
+  split: 0, 0, 0, 0
+  orig: 187, 79
+  offset: 0, 0
+  index: -1
+Swap_Hover
+  rotate: false
+  xy: 1, 1
+  size: 187, 79
+  split: 0, 0, 0, 0
+  orig: 187, 79
+  offset: 0, 0
+  index: -1
+Swap_Select
+  rotate: false
+  xy: 1, 82
+  size: 187, 79
+  split: 0, 0, 0, 0
+  orig: 187, 79
+  offset: 0, 0
+  index: -1

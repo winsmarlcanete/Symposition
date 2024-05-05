@@ -11,7 +11,6 @@ public class Symposition extends Game {
 	public static final int V_WIDTH = 400;
 	public static final int V_HEIGHT = 200;
 	public static final float PPM = 100; //pixels per meter
-
 	public Stage stage;
 	public int levelTimer;
 
@@ -21,7 +20,7 @@ public class Symposition extends Game {
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Twinkle1(this));
+		setScreen(new FurElise8(this));
 
 	}
 
