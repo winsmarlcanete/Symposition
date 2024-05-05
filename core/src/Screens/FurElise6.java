@@ -1,6 +1,7 @@
 package Screens;
 
 import Handlers.Note;
+import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -60,6 +61,9 @@ public class FurElise6 implements Screen {
 
     private boolean nextLevel;
 
+    private Hud hud;
+    private Boolean pauseTimer = false;
+
 
     public FurElise6(final Symposition game){
 
@@ -67,6 +71,8 @@ public class FurElise6 implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
+
+        hud = new Hud(game.batch, game);
 
 
 
@@ -125,6 +131,8 @@ public class FurElise6 implements Screen {
                 super.clicked(event, x, y);
                 stage.addActor(pausewindow);
                 music.pause();
+
+                pauseTimer = true;
             }
         });
 
@@ -134,6 +142,7 @@ public class FurElise6 implements Screen {
                 super.clicked(event, x, y);
                 stage.getRoot().removeActor(pausewindow);
                 music.play();
+                pauseTimer = false;
             }
         });
 
@@ -467,6 +476,13 @@ public class FurElise6 implements Screen {
         if (nextLevel) {
             game.setScreen(new FurElise7(game));
             music.dispose();
+        }
+
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+        if(!pauseTimer) {
+            hud.update(Gdx.graphics.getDeltaTime());
         }
 
     }
