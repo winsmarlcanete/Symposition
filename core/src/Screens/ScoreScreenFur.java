@@ -17,7 +17,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 
-public class ScoreScreenTwinkle implements Screen {
+public class ScoreScreenFur implements Screen {
     final Symposition game;
     OrthographicCamera camera;
     private Stage stage;
@@ -38,17 +38,17 @@ public class ScoreScreenTwinkle implements Screen {
     private final Sound sfx1;
     Music music;
 
-    public ScoreScreenTwinkle(final Symposition game){
+    public ScoreScreenFur(final Symposition game){
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        bg = new Texture(Gdx.files.internal("bgImages/Twinkle_Score.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/Studio_Score_4.png"));
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         fontskin = new Skin(Gdx.files.internal("menu/label/regular.json"));
 
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinkleV2.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/furv4.wav"));
         music.play();
 
 
@@ -83,7 +83,6 @@ public class ScoreScreenTwinkle implements Screen {
         sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
 
         next.addListener(new ClickListener(){
-
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
@@ -162,6 +161,7 @@ public class ScoreScreenTwinkle implements Screen {
         bg.dispose();
     }
 }
+
 
 
 
