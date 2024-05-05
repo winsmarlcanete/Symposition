@@ -1,0 +1,20 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"M4JAXUGtNUza4eSHRDfzLiZAttf": {
+		"file": "M4JAXUGtNUza4eSHRDfzLiZA.ttf.fnt",
+		"scaledSize": -1,
+		"markupEnabled": false,
+		"flip": false
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "M4JAXUGtNUza4eSHRDfzLiZAttf"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}
