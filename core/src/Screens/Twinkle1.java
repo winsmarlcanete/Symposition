@@ -66,6 +66,8 @@ public class Twinkle1 implements Screen {
 
         this.game = game;
 
+        game.levelTimer = 0;
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 

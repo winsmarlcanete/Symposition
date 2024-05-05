@@ -1,6 +1,7 @@
 package Screens;
 
 import Handlers.Note;
+import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -61,6 +62,9 @@ public class Twinkle6 implements Screen {
 
     private boolean nextLevel;
 
+    private Hud hud;
+    private Boolean pauseTimer = false;
+
 
     public Twinkle6(final Symposition game){
 
@@ -68,6 +72,8 @@ public class Twinkle6 implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
+
+        hud = new Hud(game.batch, game);
 
 
 
@@ -164,6 +170,7 @@ public class Twinkle6 implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 note1.playSound();
+                pauseTimer = true;
             }
         });
 
@@ -179,6 +186,7 @@ public class Twinkle6 implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 note2.playSound();
+                pauseTimer = false;
             }
         });
 
@@ -455,6 +463,12 @@ public class Twinkle6 implements Screen {
 
         stage.act();
         stage.draw();
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+        if(!pauseTimer) {
+            hud.update(Gdx.graphics.getDeltaTime());
+        }
 
 
 
