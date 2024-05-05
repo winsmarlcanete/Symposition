@@ -78,7 +78,7 @@ public class MenuScreen implements Screen {
         root.row().space(5);
 
         ImageButton chapter = new ImageButton(skin3);
-        root.add(chapter).width(100).height(15).left();
+//        root.add(chapter).width(100).height(15).left();
 //        TextButton tutorialBtn = new TextButton("Tutorial", skin);
 //        root.add(tutorialBtn).width(350).expandX().left();
 
