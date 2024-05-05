@@ -2,7 +2,7 @@
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
 	"Regular": {
 		"file": "JosefinSans-Regular.fnt",
-		"scaledSize": 15,
+		"scaledSize": 8,
 		"markupEnabled": false,
 		"flip": false
 	}

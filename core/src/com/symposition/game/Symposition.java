@@ -15,13 +15,17 @@ public class Symposition extends Game {
 	public Stage stage;
 	public int levelTimer;
 
+	public int TwinkleScore = 0;
+	public int FurEliseScore = 0;
+	public int WaltzScore = 0;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Waltz1(this));
+		setScreen(new Twinkle1(this));
 
 	}
 

@@ -75,7 +75,7 @@ public class Twinkle3 implements Screen {
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         skin2 = new Skin(Gdx.files.internal("quantum horizon/quantum-horizon-ui.json"));
 
-        bg = new Texture(Gdx.files.internal("bgImages/littlestar3.png"));
+        bg = new Texture(Gdx.files.internal("bgImages/Twinkle_Part_3.png"));
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgmusic/bg1.wav"));
         music.play();
 

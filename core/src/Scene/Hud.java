@@ -44,7 +44,7 @@ public class Hud extends Matrix4 {
         timeLabel = new Label(String.format("%03d", game.levelTimer), skin);
 
 
-        table.add(timeLabel).expandX().padTop(10);
+        table.add(timeLabel).expandX().padTop(20);
 
         stage.addActor(table);
     }
