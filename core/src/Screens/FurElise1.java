@@ -243,7 +243,7 @@ public class FurElise1 implements Screen {
 
         //Ti
         seventhNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/D6.wav"));
-        Note note7 = new Note("2",skin, seventhNote, false);
+        Note note7 = new Note("4",skin, seventhNote, false);
 
         note7.textbutton.addListener(new ClickListener(){
 
@@ -255,7 +255,7 @@ public class FurElise1 implements Screen {
         });
 
         eighthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/C6.wav"));
-        Note note8 = new Note("4",skin, eighthNote, false);
+        Note note8 = new Note("5",skin, eighthNote, false);
 
         note8.textbutton.addListener(new ClickListener(){
 
@@ -267,7 +267,7 @@ public class FurElise1 implements Screen {
         });
 
         ninthNote = Gdx.audio.newSound(Gdx.files.internal("sounds/Notes/A5.wav"));
-        Note note9 = new Note("5",skin, ninthNote, false);
+        Note note9 = new Note("6",skin, ninthNote, false);
 
         note9.textbutton.addListener(new ClickListener(){
 
@@ -302,7 +302,7 @@ public class FurElise1 implements Screen {
         notes.add(note9);
 
 
-        Collections.shuffle(notes);
+//        Collections.shuffle(notes);
 
 
 
