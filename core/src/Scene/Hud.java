@@ -13,24 +13,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.symposition.game.Symposition;
+import sun.jvm.hotspot.debugger.cdbg.Sym;
 
 public class Hud extends Matrix4 {
     public Stage stage;
     private Viewport viewport;
 
-
-    private Integer worldTimer;
     private float timeCount;
     private Integer score;
     private Skin skin;
+    public Symposition game;
 
 
 
     Label timeLabel;
 
-    public Hud(SpriteBatch sb) {
-        worldTimer = 0;
+    public Hud(SpriteBatch sb, Symposition game) {
         timeCount = 0;
+        this.game = game;
 
 
         viewport = new FitViewport(Symposition.V_WIDTH, Symposition.V_HEIGHT, new OrthographicCamera());
@@ -42,7 +42,7 @@ public class Hud extends Matrix4 {
         table.setFillParent(true);
 
 
-        timeLabel = new Label(String.format("%03d", worldTimer), skin);
+        timeLabel = new Label(String.format("%03d", game.levelTimer), skin);
 
 
         table.add(timeLabel).expandX().padTop(10);
@@ -53,10 +53,12 @@ public class Hud extends Matrix4 {
     public void update(float dt){
         timeCount += dt;
         if (timeCount >= 1){
-            worldTimer++;
-            timeLabel.setText(String.format("%03d", worldTimer));
+            game.levelTimer++;
+            timeLabel.setText(String.format("%03d", game.levelTimer));
             timeCount = 0;
         }
+
+
     }
 
 

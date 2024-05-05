@@ -66,7 +66,7 @@ public class Waltz1 implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        hud = new Hud(game.batch);
+        hud = new Hud(game.batch, game);
 
 
 
@@ -437,6 +437,8 @@ public class Waltz1 implements Screen {
         else {
             wrongSound.play();
         }
+
+
     }
 
     public void play(){

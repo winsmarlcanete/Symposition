@@ -14,6 +14,7 @@ public class Symposition extends Game {
 	public static final float PPM = 100; //pixels per meter
 
 	public Stage stage;
+	public Integer levelTimer = 0;
 
 	@Override
 	public void create () {
