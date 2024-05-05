@@ -2,12 +2,16 @@ package Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -25,9 +29,14 @@ public class ScoreScreenTwinkle implements Screen {
     private final Table details;
     private final Skin skin;
     private final Skin fontskin;
-    private Image musicalnoteImage;
-    private Label title;
+
+
     private Label timeCompletion;
+    private ImageButton next;
+    private Skin skin2;
+    private boolean exit = false;
+    private final Sound sfx1;
+    Music music;
 
     public ScoreScreenTwinkle(final Symposition game){
         this.game = game;
@@ -39,6 +48,10 @@ public class ScoreScreenTwinkle implements Screen {
         skin = new Skin(Gdx.files.internal("rainbowui/rainbow-ui.json"));
         fontskin = new Skin(Gdx.files.internal("menu/label/regular.json"));
 
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/levelmusic/twinkleV2.wav"));
+        music.play();
+
+
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
@@ -48,16 +61,39 @@ public class ScoreScreenTwinkle implements Screen {
         root.setFillParent(true);
         stage.addActor(root);
 
-        musicalnoteImage =  new Image(new Texture(Gdx.files.internal("other/ttsMusicalNote.png")));
+
 
         root.add(musicalnote).expandX();
         root.add(details).expandX();
 
-        musicalnote.add(musicalnoteImage).width(400).height(500);
+
 
         timeCompletion = new Label(String.format("%03d", game.levelTimer), fontskin);
+        timeCompletion.setFontScale(.8F);
 
-        details.add(timeCompletion).padRight(140).padTop(45);
+        details.add(timeCompletion).padTop(150);
+
+        skin2 = new Skin(Gdx.files.internal("menu/exit.json"));
+
+        next = new ImageButton(skin2);
+        details.row();
+
+        details.add(next).spaceTop(250).padLeft(300);
+
+        sfx1 = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/sfx8.wav"));
+
+        next.addListener(new ClickListener(){
+            @Override
+            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                super.exit(event, x, y, pointer, toActor);
+                sfx1.play();
+                exit = true;
+
+            }
+        });
+
+
+
 
 
 
@@ -92,6 +128,10 @@ public class ScoreScreenTwinkle implements Screen {
 
         stage.act();
         stage.draw();
+
+        if(exit){
+            game.setScreen(new LevelScreen(game));
+        }
     }
 
     @Override

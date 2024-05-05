@@ -25,7 +25,7 @@ public class Symposition extends Game {
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Twinkle1(this));
+		setScreen(new ScoreScreenTwinkle(this));
 
 	}
 
