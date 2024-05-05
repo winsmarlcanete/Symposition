@@ -1,6 +1,7 @@
 package Screens;
 
 import Handlers.Note;
+import Scene.Hud;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -64,6 +65,8 @@ public class Waltz10 implements Screen {
 
 
     private boolean nextLevel;
+    private Hud hud;
+    private Boolean pauseTimer = false;
 
 
     public Waltz10(final Symposition game){
@@ -72,6 +75,8 @@ public class Waltz10 implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
+
+        hud = new Hud(game.batch, game);
 
 
 
@@ -130,6 +135,7 @@ public class Waltz10 implements Screen {
                 super.clicked(event, x, y);
                 stage.addActor(pausewindow);
                 music.pause();
+                pauseTimer = true;
             }
         });
 
@@ -139,6 +145,7 @@ public class Waltz10 implements Screen {
                 super.clicked(event, x, y);
                 stage.getRoot().removeActor(pausewindow);
                 music.play();
+                pauseTimer = false;
             }
         });
 
@@ -619,6 +626,13 @@ public class Waltz10 implements Screen {
         if (nextLevel) {
             game.setScreen(new Waltz11(game));
             music.dispose();
+        }
+
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+        if(!pauseTimer) {
+            hud.update(Gdx.graphics.getDeltaTime());
         }
 
     }
