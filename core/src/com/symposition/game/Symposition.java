@@ -13,13 +13,14 @@ public class Symposition extends Game {
 	public static final float PPM = 100; //pixels per meter
 
 	public Stage stage;
+	public Integer levelTimer = 0;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 
 
 		stage = new Stage(new ScreenViewport());
-		setScreen(new Waltz2(this));
+		setScreen(new Twinkle1(this));
 
 	}
 
