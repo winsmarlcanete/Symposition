@@ -9,7 +9,8 @@ buildscript {
         google()
     }
     dependencies {
-        
+        classpath group: 'org.mini2Dx', name: 'parcl', version: '1.8.0'
+        classpath("com.google.guava:guava:29.0-jre")
 
     }
 }
@@ -73,3 +74,5 @@ project(":core") {
         
     }
 }
+
+
