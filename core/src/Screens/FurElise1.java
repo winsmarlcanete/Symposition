@@ -437,7 +437,7 @@ public class FurElise1 implements Screen {
                 notesOriginal.get(6).noteName == notes.get(6).noteName &&
                 notesOriginal.get(7).noteName == notes.get(7).noteName &&
                 notesOriginal.get(8).noteName == notes.get(8).noteName
-            ) {
+        ) {
             nextLevel = true;
         }
         else {
