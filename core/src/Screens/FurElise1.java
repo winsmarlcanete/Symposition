@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 
@@ -447,28 +448,97 @@ public class FurElise1 implements Screen {
 
     public void play(){
 
-        try {
-            notes.get(0).playSound();
-            Thread.sleep(220);
-            notes.get(1).playSound();
-            Thread.sleep(220);
-            notes.get(2).playSound();
-            Thread.sleep(210);
-            notes.get(3).playSound();
-            Thread.sleep(210);
-            notes.get(4).playSound();
-            Thread.sleep(210);
-            notes.get(5).playSound();
-            Thread.sleep(210);
-            notes.get(6).playSound();
-            Thread.sleep(210);
-            notes.get(7).playSound();
-            Thread.sleep(210);
-            notes.get(8).playSound();
-            Thread.sleep(210);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        notes.get(selectedNote1).setHighlighted(false);
+        notes.get(selectedNote2).setHighlighted(false);
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(0).setHighlighted(true);
+                notes.get(0).playSound();
+            }
+        }, 0.22F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(0).setHighlighted(false);
+                notes.get(1).setHighlighted(true);
+                notes.get(1).playSound();
+            }
+        }, 0.440F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(1).setHighlighted(false);
+                notes.get(2).setHighlighted(true);
+                notes.get(2).playSound();
+            }
+        }, 0.650F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(2).setHighlighted(false);
+                notes.get(3).setHighlighted(true);
+                notes.get(3).playSound();
+            }
+        }, 0.860F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(3).setHighlighted(false);
+                notes.get(4).setHighlighted(true);
+                notes.get(4).playSound();
+            }
+        }, 1.07F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(4).setHighlighted(false);
+                notes.get(5).setHighlighted(true);
+                notes.get(5).playSound();
+            }
+        }, 1.28F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(5).setHighlighted(false);
+                notes.get(6).setHighlighted(true);
+                notes.get(6).playSound();
+            }
+        }, 1.49F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(6).setHighlighted(false);
+                notes.get(7).setHighlighted(true);
+                notes.get(7).playSound();
+            }
+        }, 1.7F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(7).setHighlighted(false);
+                notes.get(8).setHighlighted(true);
+                notes.get(8).playSound();
+            }
+        }, 1.91F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(8).setHighlighted(false);
+
+                notes.get(selectedNote1).setHighlighted(true);
+                notes.get(selectedNote2).setHighlighted(true);
+            }
+        }, 2.120F);
 
 
 

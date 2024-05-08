@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.symposition.game.Symposition;
-import sun.jvm.hotspot.debugger.cdbg.Sym;
+
 
 public class Hud extends Matrix4 {
     public Stage stage;

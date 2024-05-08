@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.symposition.game.Symposition;
 
@@ -474,32 +475,115 @@ public class FurElise2 implements Screen {
 
     public void play(){
 
-        try {
-            notes.get(0).playSound();
-            Thread.sleep(220);
-            notes.get(1).playSound();
-            Thread.sleep(220);
-            notes.get(2).playSound();
-            Thread.sleep(220);
-            notes.get(3).playSound();
-            Thread.sleep(700);
-            notes.get(4).playSound();
-            Thread.sleep(220);
-            notes.get(5).playSound();
-            Thread.sleep(220);
-            notes.get(6).playSound();
-            Thread.sleep(220);
-            notes.get(7).playSound();
-            Thread.sleep(700);
-            notes.get(8).playSound();
-            Thread.sleep(200);
-            notes.get(9).playSound();
-            Thread.sleep(220);
-            notes.get(10).playSound();
-            Thread.sleep(250);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        notes.get(selectedNote1).setHighlighted(false);
+        notes.get(selectedNote2).setHighlighted(false);
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(0).setHighlighted(true);
+                notes.get(0).playSound();
+            }
+        }, 0.22F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(0).setHighlighted(false);
+                notes.get(1).setHighlighted(true);
+                notes.get(1).playSound();
+            }
+        }, 0.440F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(1).setHighlighted(false);
+                notes.get(2).setHighlighted(true);
+                notes.get(2).playSound();
+            }
+        }, 0.650F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(2).setHighlighted(false);
+                notes.get(3).setHighlighted(true);
+                notes.get(3).playSound();
+            }
+        }, 1.35F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(3).setHighlighted(false);
+                notes.get(4).setHighlighted(true);
+                notes.get(4).playSound();
+            }
+        }, 1.570F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(4).setHighlighted(false);
+                notes.get(5).setHighlighted(true);
+                notes.get(5).playSound();
+            }
+        }, 1.79F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(5).setHighlighted(false);
+                notes.get(6).setHighlighted(true);
+                notes.get(6).playSound();
+            }
+        }, 2.01F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(6).setHighlighted(false);
+                notes.get(7).setHighlighted(true);
+                notes.get(7).playSound();
+            }
+        }, 2.71F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(7).setHighlighted(false);
+                notes.get(8).setHighlighted(true);
+                notes.get(8).playSound();
+            }
+        }, 3.13F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(8).setHighlighted(false);
+                notes.get(9).setHighlighted(true);
+                notes.get(9).playSound();
+            }
+        }, 3.38F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(9).setHighlighted(false);
+                notes.get(10).setHighlighted(true);
+                notes.get(10).playSound();
+            }
+        }, 3.63F);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                notes.get(10).setHighlighted(false);
+
+                notes.get(selectedNote1).setHighlighted(true);
+                notes.get(selectedNote2).setHighlighted(true);
+            }
+        }, 3.85F);
     }
 
 
